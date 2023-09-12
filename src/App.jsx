@@ -11,7 +11,7 @@ import ProfileScreen from "./pages/ProfileScreen.jsx"
 import TimetableScreen from "./pages/Timetable.jsx"
 import DepartmentScreen from './pages/Department.jsx'
 import AssignmentScreen from './pages/AssignmentScreen.jsx'
-
+import AssignmentDetailScreen from './pages/AssignmentDetails.jsx'
 
 
 const router = createBrowserRouter([
@@ -50,6 +50,13 @@ const router = createBrowserRouter([
     {
       path: "/assignment",
       element: <AssignmentScreen />,
+      children:[
+        {
+          path: "/assignment/:details",
+          element: <AssignmentDetailScreen />,
+        }
+
+      ]
     },
 
 

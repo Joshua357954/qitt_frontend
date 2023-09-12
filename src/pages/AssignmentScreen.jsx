@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { BsChevronLeft as Arrow  } from 'react-icons/bs'
+import { BsImage, BsChevronLeft as Arrow  } from 'react-icons/bs'
 
  
 const AssignmentScreen = ({ className }) => {
@@ -23,20 +23,20 @@ const AssignmentScreen = ({ className }) => {
         			<div className="w-full sm:w-[60%]  px-3 pt-3  bg-gray-00 h-full overflow-y-auto ">
 
 	    				
-	    				{  data.map((idx) => {
-	    					return <div   className="w-full mb-2 bg-gray-50 h-32 flex items-center border-lv-2 border-black  rounded">
+	    				{  data.map((item,idx) => {
+	    					return <div key={idx} className="w-full mb-2 bg-gray-50 h-32 flex items-center border-lv-2 border-black  rounded">
 	    					
 		    					<div className="bg relative w-[35%] h-full bg-blue-300 rounded-tl rounded-bl">
 		    						
 		    						<div className=" absolute text-gray-700  wt left-5 sm:left-4 top-2  flex flex-col justify-center items-center w-[30%] ">
-		        						<h2 className="font-black text-3xl">July</h2>
-		        						<p className="font-bold text-lg">23</p>
+		        						<h2 className="font-black text-3xl ob">July</h2>
+		        						<p className="font-bold text-lg ob">23</p>
 		    						</div>
 			    				</div>
 
 								<div className="w-[70%] h-full flex flex-col px-3 pt-2 gap-y-1">
-									<h3 className="text-xl font-extrabold">First Physics Assignment</h3>
-									<p className="font-medium">Format:  JPG</p>
+									<Link to="/assignment/physics" className="text-xl font-extrabold text-gray-700"> Physics  </Link>
+									<p className="font-medium flex gap-x-2 items-center justify-center bg-green-100 px-2 py-1 rounded-xl w-20"><BsImage className="text-green-500"/>JPG</p>
 									<p className="font-light">22 days ago</p>
 								</div>
 
