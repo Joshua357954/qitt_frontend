@@ -2,6 +2,7 @@ import React from 'react';
 import { ImAttachment as Attachement } from 'react-icons/im'
 import Imgs from '../assets/images/serious-girl (1).jpg'
 import { Link } from 'react-router-dom'
+import PageNav from '../components/PageNav.jsx'
 import { BsChevronLeft as Arrow  } from 'react-icons/bs'
 
 
@@ -11,11 +12,7 @@ const ProfileScreen = ({ className }) => {
         	
         	<section className="w-full h-full">
         		
-        		<div className="flex justify-between h-[9%] sm:h-[13%] bg-gray-800 items-center text-gray-100 px-2">
-        			<Link to="/" className="flex gap-3 items-center hover:text-gray-100 font-medium text-gray-100"> <Arrow className="text-yellow-300"/>  Back</Link>
-        			<p className="text-yellow-300 font-bold text-xl">Profile</p>
-        			<small className="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>
-        		</div>
+        		<PageNav url="/" name="Profile"/>
 
         		<div className="flex justify-center  items-center h-[90%] sm:h-[87%] ">
 	        		<div className="h-full w-full sm:w-[60%] bg-yellow-00 pt-3 flex flex-col py-2 items-center overflow-y-auto">
@@ -23,7 +20,7 @@ const ProfileScreen = ({ className }) => {
 	        			<div className="flex flex-col w-full px-2 gap-2 items-center">
 		        			
 		        			<div className="flex justify-center items-center gap-3 ">
-			        			<div className="h-36 w-36 border-[1px] border-yellow-300 rounded-full">
+			        			<div className="h-32 w-32 sm:h-36 sm:w-36 border-[1px] border-yellow-300 rounded-full">
 				        			<img src={Imgs} className="w-full h-full rounded-full bg-cover object-cover"/>
 			        			</div>
 
@@ -44,7 +41,7 @@ const ProfileScreen = ({ className }) => {
 							<h2 className="text-xl font-extrabold og text-gray-800">Personal Info</h2>
 			        		<fieldset className="flex border-0 border-gray-400 pt-2">
 			        			
-			        			<div className="flex flex-col border-r-2 border-red-300 w-[40%]">
+			        			<div className="flex flex-col border-r-2 border-gray-400 w-[40%]">
 				        			<p className="font-bold">Gender</p> 
 				        			<p className="font-light">Male</p>
 			        			</div>
@@ -61,14 +58,19 @@ const ProfileScreen = ({ className }) => {
 							<h2 className="text-xl font-extrabold ob text-gray-800">School Info</h2>
 			        		<fieldset className="flex border-0 border-gray-400 pt-2">
 			        			
-			        			<div className="flex flex-col border-r-2 border-blue-400 w-[40%]">
+			        			<div className="flex w-[30%] flex-col border-r-2 border-gray-400 w-[40%]">
 				        			<p className="font-bold">Faculty</p> 
 				        			<p className="font-light">Science</p>
 			        			</div>
 
-			        			<div className="flex flex-col pl-4">
+			        			<div className="flex w-[40%] flex-col pl-3  p ">
 				        			<p className="font-bold">Department</p> 
-				        			<p className="font-light">CSC</p>
+				        			<p title="Computer Science" className="cursor-pointer font-light">CSC</p>
+			        			</div>
+
+			        			<div className="flex w-[30%] flex-col pl-4 border-l-2 border-gray-400">
+				        			<p className="font-bold">Level</p> 
+				        			<p className="font-light">100 Lvl</p>
 			        			</div>
 
 			        		</fieldset>

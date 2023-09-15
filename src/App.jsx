@@ -12,6 +12,9 @@ import TimetableScreen from "./pages/Timetable.jsx"
 import DepartmentScreen from './pages/Department.jsx'
 import AssignmentScreen from './pages/AssignmentScreen.jsx'
 import AssignmentDetailScreen from './pages/AssignmentDetails.jsx'
+import PastQuestionScreen from './pages/PastQuestion.jsx'
+import QuizScreen from './pages/QuizScreen.jsx'
+import ScoreBoardScreen from './pages/ScoreBoard.jsx'
 
 
 const router = createBrowserRouter([
@@ -50,15 +53,31 @@ const router = createBrowserRouter([
     {
       path: "/assignment",
       element: <AssignmentScreen />,
-      children:[
-        {
-          path: "/assignment/:details",
-          element: <AssignmentDetailScreen />,
-        }
 
-      ]
     },
+    {
+          path: "/assignmentByCourse",
+          element: <AssignmentDetailScreen />,
+    },
+      {
+          path: "/assignment/:course/:date",
+          element: <AssignmentDetailScreen />,
+    },
+      {
+          path: "/pastQuestion",
+          element: <PastQuestionScreen />,
+    },
+      {
+          path: "/past_question_practice/:course/:time",
+          element: <QuizScreen />,
+    },
+      {
+          path: "/past_question_scoreboard",
+          element: <ScoreBoardScreen />,
+    }
 
+
+ 
 
     // {
     //   path: "/forum",

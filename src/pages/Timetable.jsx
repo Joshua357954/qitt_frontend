@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from "react"
+import PageNav from '../components/PageNav.jsx'
 import { BsChevronLeft as Arrow  } from 'react-icons/bs'
 
 
@@ -19,11 +20,7 @@ const TimetableScreen = ({ className }) => {
         	
         	<section className="w-full h-full ">
 	    	    
-	    	    <div className="flex justify-between h-[9%] sm:h-[13%] bg-gray-800 items-center text-gray-100 px-2">
-	    			<Link to="/" className="flex gap-3 items-center hover:text-gray-100 font-medium text-gray-100"> <Arrow className="text-green-400"/>  Back</Link>
-	    			<p className="text-green-400 font-bold text-xl">Timetable</p>
-	    			<small className="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>
-	    		</div>
+	    	    <PageNav url="/" name="Timetable" />
     		
 
 	    		<div className="w-full h-[91%] flex justify-center sm:h-[87%] ">
@@ -33,7 +30,7 @@ const TimetableScreen = ({ className }) => {
 	    				<div className="w-full px-2 h-[7%] mb-7 sm:h-[10%]  overflow-x-auto flex sm:justify-center gap-x-2">
 	    					{
 	    						days.map((item,idx) => {
-									return <div onClick={() => setDay(item)} className={`capitalize flex border-2 border-black text-black select-none justify-center px-2 font-bold text-sm items-center ${item === day ? 'bg-green-300' : ""} rounded-xl`}> {item} </div>
+									return <div onClick={() => setDay(item)} className={`capitalize flex border-2 border-black text-black select-none justify-center px-2 font-bold text-sm items-center ${item === day ? 'bg-blue-400' : ""} rounded-xl`}> {item} </div>
 	    						})
 	    					
 	    					}

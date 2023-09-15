@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { BsSend as Chat,  BsChevronLeft as Right } from 'react-icons/bs'
+import { FaChevronLeft as Right } from 'react-icons/fa'
+import { BsSend as Chat } from 'react-icons/bs'
 
 
 import { Link } from 'react-router-dom'

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PageNav from '../components/PageNav.jsx'
 import { BsChevronLeft as Arrow  } from 'react-icons/bs'
 
 const Department = ({ className }) => {
@@ -14,11 +15,7 @@ const Department = ({ className }) => {
         	
         	<section className="w-full h-full">
         		
-        		<div className="flex justify-between h-[9%] sm:h-[13%] bg-gray-800 items-center text-gray-100 px-2">
-        			<Link to="/" className="flex gap-3 items-center hover:text-gray-100 font-medium text-gray-100"> <Arrow className="text-yellow-300"/>  Back</Link>
-        			<p className="text-yellow-300 font-bold text-xl">CSC</p>
-        			<small className="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>
-        		</div>
+        		<PageNav url="/" name="CSC"/>
 
         		<div className="w-ful h-[9%] sm:h-[13%] bg-ed-100 flex justify-center items-center mt-2">
         			<div className="w-[75%] h-full py-1 bg-gray-100 flex justify-between items-center px-2 rounded text-center ">

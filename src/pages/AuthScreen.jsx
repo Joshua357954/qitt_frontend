@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom'
 import Bcgg  from "../assets/images/serious-girl (1).jpg"
-import {BsChat as Chat, BsChevronRight as Arrow  } from 'react-icons/bs'
+import {BsChat as Chat, BsChevronRight} from 'react-icons/bs'
+import { FaChevronRight as Arrow   } from 'react-icons/fa'
+
 
 
 
