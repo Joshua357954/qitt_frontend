@@ -20,12 +20,17 @@ const AssignmentDetails = ({ className }) => {
         			<div className="w-full sm:w-[60%] h-full px-2">
         				
         				<div className="flex items-center gap-x-2 pt-3">
-        					<p className="font-semibold text-black"> Course : </p> <h2 className="text-2xl font-bold text-gray-800">{course}</h2>
+        					<p className="font-light text-black"> Course : </p> <h2 className="text-2xl  font-semibold text-gray-800">{course}</h2>
         				</div>
         				
         				<div className="flex items-center gap-x-2 pt-3 ">
-        					<p className="font-semibold text-black"> Date Given : </p> <h2 className="text-2xl font-bold text-gray-800">{date}</h2>
+        					<p className="font-light text-black"> Date Given : </p> <h2 className="text-2xl font-semibold text-gray-800">{date}</h2>
         				</div>
+
+                        <div className="flex items-center gap-x-2 pt-3 ">
+                            <p className="font-light text-black"> Submission Date : </p> <h2 className="text-2xl font-semibold text-gray-800">July 3</h2>
+                        </div>
+
         				
         				<div className="w-full pr-4 mt-4 rounded h-14 bg-gray-200 justify-between flex items-center px-1">
         					<div className="flex gap-x-3 items-center">

@@ -10,13 +10,13 @@ const FeedbackScreen = ({ className }) => {
         <div className="w-screen h-screen"> 
            <section className="w-full relative h-full">
 
-           		<div className="w-full h-[10%] sm:h-[13%] bg-gray-800  flex font-bold justify-center items-center">
+           		<div className="w-full h-16 sm:h-[13%] bg-black  flex font-bold justify-center items-center">
 	           		<Link className="flex flex gap-3 text-gray-50 items-center hover:text-gray-200" to="/"> <Right className="text-yellow-400"/> Go Back </Link>
            		</div>
 
            		<div className="bg-blue-20 h-[90%] w-full flex-col  gap-y-3 flex items-center pt-12 ">
-           			<h1 className="text-3xl wt font-extrabold">Feedback</h1>
-           			<div className="h-14 w-14 flex justify-center items-center rounded-full bg-gray-800">
+           			<h1 className="text-3xl wt font-extrabold text-black">Feedback</h1>
+           			<div className="h-14 w-14 flex justify-center items-center rounded-full bg-gray-900">
            			<Chat className="text-yellow-400" size={25}/></div>
            			
            			<div className="rounded-lg">

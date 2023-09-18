@@ -15,16 +15,16 @@ const HomeScreen = () => {
 
 
 	const Categories = [
-		{title: "Timetable",icon: <Time size={20} className="text-gray-700 text-lg font-bold"/> ,link:'/timetable', discription: "Don't miss lectures anymore, with our top notch timetable", bg:"bg-yellow-400"},
-		{title: "Resources",icon: <Tool size={20} className="text-gray-700 text-lg font-bold"/> ,link:'/', discription: "Get all you need to stay up-to-date in school, coming ...", bg:"bg-blue-400"}
+		{title: "Timetable",icon: <Time size={27} className="text-yellow-500 text-lg font-bold"/> ,link:'/timetable', discription: "Don't miss lectures anymore, with our top notch timetable", bg:"bg-yellow-100"},
+		{title: "Resources",icon: <Tool size={25} className="text-blue-500 text-lg font-bold"/> ,link:'/', discription: "Get all you need to stay up-to-date in school, coming ...", bg:"bg-blue-100"}
 	]
     return (
 
-        <main className="h-[100vh] w-screen bg-gray-100 select-none">
+        <main className="h-[100vh] w-screen bg-white select-none">
         	
 
-        	<nav className={`w-full h-[14%] sm:h-[17%] bg-gray-100 flex px-6 sm:px-10 justify-between items-center `}>
-        		<div className="text-5xl font-extrabold select-none text-gray-800">Qitt</div>
+        	<nav className={`w-full h-[14%] sm:h-[17%] bg-white flex px-6 sm:px-10 justify-between items-center `}>
+        		<div className="text-5xl font-extrabold select-none text-black">Qitt</div>
         		<Link to='/auth' className="text-2xl hidden text-black hover:text-black sm:block"> Dashboard </Link>
         		
 
@@ -46,8 +46,10 @@ const HomeScreen = () => {
 
         	<section className={`flex  flex-col-reverse sm:flex-row  w-full h-[83%] sm:px-16 pb-1` }> 
 	        	
-	        	<aside className="absolute bottom-0 left-0 bg-gray-800 sm:static sm:rounded-lg h-16 sm:h-full w-full sm:w-[30%] border-r-2 border-gray-200 px-5 flex flex-row sm:flex-col justify-around items-center">
-	        		
+	        	<aside className="absolute bottom-0 left-0 text-white opacity-95 sm:static sm:rounded-lg h-16 sm:h-full w-full sm:w-[30%] sm:border-r-2 border-gray-200 sm:px-5 px-1 flex flex-row sm:flex-col sm:justify-around justify-between items-center">
+	        	
+	        	<div className="text-white bg-black opacity-95 w-full h-16 sm:h-full w-full  border-gray-200 sm:px-5 px-10 flex flex-row sm:flex-col rounded sm:justify-around justify-between items-center">
+	    
 	        		{/*<div className="hidden w-full bg-sky-50 py-4 px-4 flex gap-x-2 justify-between items-center rounded">
 	        			
 	        			<div className="flex items-center gap-x-2 text-[19px] text-gray-700 font-semibold">
@@ -74,7 +76,7 @@ const HomeScreen = () => {
 
 	        		</div>*/}
 
-	        		<Link to="/pastQuestion" className="flex flex-col items-center gap-y-2 px-3 py-4 rounded-lg  bg-gray-590"> 
+	        		<Link to="/pastQuestion" className="flex flex-col items-center gap-y-1 px-3 py-4 rounded-lg  bg-gray-590"> 
 	        			<Book className="text-xl sm:text-2xl  bg-yellow-00 text-yellow-300 rounded-md"/>
 	        			<p className="text-gray-100 text-sm sm:text-lg font-semibold sm:font-bold">Past &nbsp; Q/A's</p>
 	        		</Link>
@@ -93,31 +95,32 @@ const HomeScreen = () => {
 		        			</textarea>
 	        			</div>
 
-	        			<Link to="/feedback" className="sm:hidden flex gap-y-2 flex-col gap-y-1 items-center text-gray-800">
+	        			<Link to="/feedback" className="sm:hidden flex gap-y-1 flex-col gap-y-1 items-center text-gray-800">
 		        			<SendIcon className="text-yellow-300 text-2xl"/>
 		        			<p className="text-gray-100 text-sm font-semibold sm:font-bold">Feedback</p>
 	        			</Link>
 
 	        		</div>
+					</div>
+	        	</aside>
 
-	        	</aside>  
 
 
 	        {/*  Right Panel */}
-	        	<section className="flex flex-col items-center gap-y-3 h-full w-full sm:w-[70%] px-4 py-0">
+	        	<section className="overflow-y-auto flex flex-col items-center gap-y-3 h-full w-full sm:w-[70%] px-2 py-0">
 	        	
 	        	{/* Top Section */}
-	        		<div className="imgg relative w-full h-[34%] sm:h-[55%] border-[2px] border-gray-500 flex rounded-lg bg-yellow-200 px-4 sm:pt-5">
-	        			<h2 className="font-extrabold text-4xl sm:text-5xl wt text-gray-800 mt-5 p-2 drop-shadow-2xl ">Hi, Josh</h2>
+	        		<div className="imgg relative w-full h-[34%] sm:h-[55%] border-[2px] border-black flex rounded-lg bg-transparent px-2 sm:pt-5">
+	        			<h2 className="font-extrabold text-4xl sm:text-5xl wt text-black mt-5 p-2 drop-shadow-2xl ">Hi, Josh</h2>
 	        			
 	        			<div className="absolute top-[1px] right-0 w-[43%] sm:w-[40%] flex flex-col gap-y-2 pt-2 pr-2">
 		        			
-		        			<Link to="/assignment" className=" bg-gray-700 py-4 px-4  rounded-lg flex gap-x-2 items-center">
-			        			<Assign   className=" text-xl font-bold text-yellow-400"/> 
+		        			<Link to="/assignment" className=" bg-black opacity-95 py-4 px-4  rounded-lg flex gap-x-2 items-center">
+			        			<Assign   className="text-xl font-bold text-yellow-400"/> 
 			        			<p className="truncate font-bold text-white">Assignment</p>
-			        		</Link>
+			        		</Link> 
 
-			        		<Link to="/department" className="bg-gray-700 py-4 px-4  rounded-lg flex gap-x-2 items-center ">
+			        		<Link to="/department" className="bg-black opacity-95 py-4 px-4  rounded-lg flex gap-x-2 items-center ">
 			        			<Friends  className=" text-[20px]  text-yellow-400"/>	
 			        			<p className="truncate font-bold text-white">CSC</p>
 			        		</Link>
@@ -132,15 +135,15 @@ const HomeScreen = () => {
 						{
 							Categories.map((item,idx) => {
 								
-								return <Link key={idx} to={item.link} className={`${item.bg} border-[2px] sm:border-[3px] border-gray-600 h-full w-[49%] rounded-lg bg-blue-30 px-2  py-6 flex flex-col justify-start gap-4`}>
+								return <Link key={idx} to={item.link} className={`img ${item.bg} border-[2px] sm:border-[2px] border-black h-full w-[49%] rounded-lg bg-blue-30 px-2  py-6 flex flex-col justify-start gap-4`}>
 		        				
-			        				<div className={`${item.iconBg} bg-gray-100 w-5/12 sm:w-3/12   flex justify-center items-center px-1 py-5 rounded-2xl`}> 
+			        				<div className={`${item.iconBg} ${item.bg} w-5/12 sm:w-3/12   flex justify-center items-center px-1 py-5 rounded-2xl`}> 
 				        				{item.icon}
 			        				</div>
-		
-			        				<div className="flex flex-col">
-				        				<h2 className="text-xl font-extrabold mb-2 text-gray-900">{item.title}</h2>
-				        				<p className="font-medium text-gray-700 text-[14px]">{item.discription}</p>
+		     
+			        				<div className="flex flex-col">  
+				        				<h2 className="text-xl font-extrabold mb-2 text-black">{item.title}</h2>
+				        				<p className="font-light text-gray-900 text-[14px]">{item.discription}</p>
 									</div>
 		
 			        			</Link>

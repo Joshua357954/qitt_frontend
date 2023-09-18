@@ -19,9 +19,9 @@ const Department = ({ className }) => {
 
         		<div className="w-ful h-[9%] sm:h-[13%] bg-ed-100 flex justify-center items-center mt-2">
         			<div className="w-[75%] h-full py-1 bg-gray-100 flex justify-between items-center px-2 rounded text-center ">
-        				<div onClick={()=> setSection('class')} className={`w-[33%]  text-lg flex justify-center items-center text-gray-800 ${section == 'class' ? 'bg-yellow-400 font-extrabold' : ''} h-full rounded`}> Class </div><div className="h-full ml-1 w-1 bg-gray-100"></div>
-        				<div onClick={()=> setSection('excos')} className={`w-[33%] rounded flex justify-center ${section == 'excos' ? 'bg-yellow-400 font-extrabold' : ''} items-center  h-full`}> Excos </div><div className="h-full w-1 bg-gray-100"></div>
-        				<div onClick={()=> setSection('courses')} className={`w-[33%] rounded flex justify-center ${section == 'courses' ? 'bg-yellow-400 font-extrabold' : ''} items-center  h-full`}> Courses </div>
+        				<div onClick={()=> setSection('class')} className={`w-[33%]  text-lg flex justify-center items-center text-black ${section == 'class' ? 'bg-yellow-400 font-extrabold' : ''} h-full rounded`}> Class </div><div className="h-full ml-1 w-1 bg-gray-100"></div>
+        				<div onClick={()=> setSection('excos')} className={`w-[33%] rounded flex justify-center text-black ${section == 'excos' ? 'bg-yellow-400 font-extrabold' : ''} items-center  h-full`}> Excos </div><div className="h-full w-1 bg-gray-100"></div>
+        				<div onClick={()=> setSection('courses')} className={`w-[33%] rounded flex justify-center text-black ${section == 'courses' ? 'bg-yellow-400 font-extrabold' : ''} items-center  h-full`}> Courses </div>
         			</div>
         		</div>
 

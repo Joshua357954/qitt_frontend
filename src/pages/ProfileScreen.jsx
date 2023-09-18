@@ -14,7 +14,7 @@ const ProfileScreen = ({ className }) => {
         		
         		<PageNav url="/" name="Profile"/>
 
-        		<div className="flex justify-center  items-center h-[90%] sm:h-[87%] ">
+        		<div className="flex justify-center text-black items-center h-[90%] sm:h-[87%] ">
 	        		<div className="h-full w-full sm:w-[60%] bg-yellow-00 pt-3 flex flex-col py-2 items-center overflow-y-auto">
 	        			
 	        			<div className="flex flex-col w-full px-2 gap-2 items-center">
@@ -38,7 +38,7 @@ const ProfileScreen = ({ className }) => {
 
 
 	        			<div className="w-full sm:w-[67%] pt-5 px-2 pb-3">
-							<h2 className="text-xl font-extrabold og text-gray-800">Personal Info</h2>
+							<h2 className="text-xl text-black font-extrabold og text-gray-800">Personal Info</h2>
 			        		<fieldset className="flex border-0 border-gray-400 pt-2">
 			        			
 			        			<div className="flex flex-col border-r-2 border-gray-400 w-[40%]">
@@ -55,7 +55,7 @@ const ProfileScreen = ({ className }) => {
 	        			</div>
 
 	        			<div className="w-full sm:w-[67%] pt-3 px-2 ">
-							<h2 className="text-xl font-extrabold ob text-gray-800">School Info</h2>
+							<h2 className="text-xl text-black font-extrabold ob text-gray-800">School Info</h2>
 			        		<fieldset className="flex border-0 border-gray-400 pt-2">
 			        			
 			        			<div className="flex w-[30%] flex-col border-r-2 border-gray-400 w-[40%]">

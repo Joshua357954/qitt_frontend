@@ -16,6 +16,14 @@ import PastQuestionScreen from './pages/PastQuestion.jsx'
 import QuizScreen from './pages/QuizScreen.jsx'
 import ScoreBoardScreen from './pages/ScoreBoard.jsx'
 
+import AdminScreen from './pages/screens/HomeScreen.jsx'
+import AdminAssignmentScreen from './pages/screens/Assignment/AssignmentScreen.jsx'
+
+import AdminTimetableScreen from './pages/screens/Timetable/TimetableScreen.jsx'
+import UpdateAssignmentScreen from './pages/screens/Assignment/UpdateAssignment.jsx'
+
+import AdminFeedbackScreen from './pages/screens/FeedbackScreen.jsx'
+
 
 const router = createBrowserRouter([
     
@@ -74,16 +82,36 @@ const router = createBrowserRouter([
       {
           path: "/past_question_scoreboard",
           element: <ScoreBoardScreen />,
-    }
+    },
 
 
  
 
+    {
+      path: "/admin",
+      element: <AdminScreen />,
+    },
+    {
+      path: "/admin/timetable",
+      element: <AdminTimetableScreen />,
+    },
     // {
-    //   path: "/forum",
-    //   element: <ForumScreen />,
+    //   path: "/admin/updateTimetable",
+    //   element: <UpdateTimetableScreen />,
     // },
 
+    {
+      path: "/admin/feedback",
+      element: <AdminFeedbackScreen />,
+    },
+    {
+      path: "/admin/assignment",
+      element: <AdminAssignmentScreen />,
+    },
+        {
+      path: "/admin/updateAssignment",
+      element: <UpdateAssignmentScreen />,
+    },
     // {
     //   path: "/monitization",
     //   element: <MonitizationScreen />,

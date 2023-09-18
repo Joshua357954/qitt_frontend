@@ -27,10 +27,10 @@ const TimetableScreen = ({ className }) => {
 	    			
 	    			<div className="w-full sm:w-[60%] h-full bg-blac flex flex-col items-center bg-yellow-10 pt-5">
 	    				
-	    				<div className="w-full px-2 h-[7%] mb-7 sm:h-[10%]  overflow-x-auto flex sm:justify-center gap-x-2">
+	    				<div className="w-full px-2 h-[7%] mb-7 sm:h-[10%] overflow-x-auto flex sm:justify-center gap-x-2">
 	    					{
 	    						days.map((item,idx) => {
-									return <div onClick={() => setDay(item)} className={`capitalize flex border-2 border-black text-black select-none justify-center px-2 font-bold text-sm items-center ${item === day ? 'bg-blue-400' : ""} rounded-xl`}> {item} </div>
+									return <div onClick={() => setDay(item)} className={`capitalize flex text-black select-none justify-center px-2 font-bold text-sm items-center  ${item === day ? 'bg-gray-200 border-[1px] border-black' : "bg-gray-50"} rounded-xl`}> {item} </div>
 	    						})
 	    					
 	    					}

@@ -13,7 +13,7 @@ const PastQuestion = ({ className }) => {
     return (
        <main className="w-screen h-screen select-none"> 
         	
-        	<section className="w-full h-full">
+        	<section className="w-full h-full overflow-y-auto">
         		<PageNav url="/" name="Past Questions"/>
         	
 
@@ -30,7 +30,7 @@ const PastQuestion = ({ className }) => {
 
 			
 			{selection == 'courses' ? 
-    			<section className="w-full pt-4 bg-gray-40">
+    			<section className="w-full pt-4 bg-gray-40 overflow-y-auto">
     			
         			{ cours.map((item,idx) => {
         				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
@@ -76,6 +76,7 @@ const PastQuestion = ({ className }) => {
 						<button className="bg-gray-200"> <small className="bg-gray-00 p-0 text-gray-400 text-sm"> Practice </small> <p>With Friends</p> </button>
 					</div>
 
+					<Link className="underline">Check ScoreBoard</Link>
 	        	</section>
 			: "" }
 
