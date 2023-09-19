@@ -12,23 +12,23 @@ import { FaUserFriends as Friends, FaFacebookMessenger as Message } from 'react-
 const SideNav = () => {
 
 	const SideNav_Items = [
-		{name: 'Users',icon:<Friends className="text-2xl  text-yellow-300 "/>, route:'/admin'},
-		{name:"Timetable",icon:<Time className="text-2xl  text-yellow-300 "/>, route:'/admin/timetable'},
-		{name:"Assignment",icon:<Assign className="text-2xl text-yellow-300 "/>, route:'/admin/assignment'},
-		{name:"Feedback",icon:<Chat className="text-2xl  text-yellow-300 "/>, route:'/admin/feedback'},
+		{name: 'Users',icon:<Friends className="text-xl  text-yellow-300 "/>, route:'/admin'},
+		{name:"Timetable",icon:<Time className="text-xl  text-yellow-300 "/>, route:'/admin/timetable'},
+		{name:"Assignment",icon:<Assign className="text-xl text-yellow-300 "/>, route:'/admin/assignment'},
+		{name:"Feedback",icon:<Chat className="text-xl  text-yellow-300 "/>, route:'/admin/feedback'},
 	]
 
     return (
-        <aside className="h-full w-[20%] h-full bg-gray-200 flex pt-5 flex-col g">
+        <aside className="h-full w-[30%] bg-gray-200 flex flex-col items-start">
         	
-        	<div className="flex flex-col w-full py-1 h-full justify-center items-center text-center bg-gray-200">
+        	<div className="flex flex-col w-full py-1 h-fit justify-center items-center text-center bg-gray-200">
        			<h1 className="font-black text-black">Qitt</h1>
-       			<p className="bg-red-600 w-fit text p-1 rounded text-gray-100"> Admin</p>
+       			<p className="bg-red-600 text-sm w-fit text p-1 rounded text-gray-100"> Admin</p>
 	       	</div>
 
-        	<div className="w-full h-full px-2">
+        	<div className="w-full h-full px-2 pt-4">
         	{SideNav_Items.map((item, index)=> {
-				return <Link to={item.route} key={index} className="bg-black bg-opacity-80 text-black rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
+				return <Link to={item.route} key={index} className="text-sm bg-black bg-opacity-80 text-black rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
 		        })
         	}
         	</div>

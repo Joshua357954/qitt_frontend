@@ -17,10 +17,13 @@ import QuizScreen from './pages/QuizScreen.jsx'
 import ScoreBoardScreen from './pages/ScoreBoard.jsx'
 
 import AdminScreen from './pages/screens/HomeScreen.jsx'
+
 import AdminAssignmentScreen from './pages/screens/Assignment/AssignmentScreen.jsx'
+import UpdateAssignmentScreen from './pages/screens/Assignment/UpdateAssignment.jsx'
 
 import AdminTimetableScreen from './pages/screens/Timetable/TimetableScreen.jsx'
-import UpdateAssignmentScreen from './pages/screens/Assignment/UpdateAssignment.jsx'
+import UpdateTimetableScreen from './pages/screens/Timetable/UpdateTimetable.jsx'
+
 
 import AdminFeedbackScreen from './pages/screens/FeedbackScreen.jsx'
 
@@ -95,10 +98,10 @@ const router = createBrowserRouter([
       path: "/admin/timetable",
       element: <AdminTimetableScreen />,
     },
-    // {
-    //   path: "/admin/updateTimetable",
-    //   element: <UpdateTimetableScreen />,
-    // },
+    {
+      path: "/admin/updateTimetable",
+      element: <UpdateTimetableScreen />,
+    },
 
     {
       path: "/admin/feedback",

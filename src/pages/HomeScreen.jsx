@@ -46,9 +46,9 @@ const HomeScreen = () => {
 
         	<section className={`flex  flex-col-reverse sm:flex-row  w-full h-[83%] sm:px-16 pb-1` }> 
 	        	
-	        	<aside className="absolute bottom-0 left-0 text-white opacity-95 sm:static sm:rounded-lg h-16 sm:h-full w-full sm:w-[30%] sm:border-r-2 border-gray-200 sm:px-5 px-1 flex flex-row sm:flex-col sm:justify-around justify-between items-center">
+	        	<aside className="absolute bottom-0 left-0 sm:bg-black opacity-95 sm:static sm:rounded-lg h-16 sm:h-full w-full sm:w-[30%] sm:border-r-2 border-gray-200 sm:px-5 px-1 flex flex-row sm:flex-col sm:justify-around justify-between items-center">
 	        	
-	        	<div className="text-white bg-black opacity-95 w-full h-16 sm:h-full w-full  border-gray-200 sm:px-5 px-10 flex flex-row sm:flex-col rounded sm:justify-around justify-between items-center">
+	        	<div className="text-white bg-black opacity-95 h-16 sm:h-full w-full  border-gray-200 sm:px-5 px-10 flex flex-row sm:flex-col rounded sm:justify-around justify-between items-center">
 	    
 	        		{/*<div className="hidden w-full bg-sky-50 py-4 px-4 flex gap-x-2 justify-between items-center rounded">
 	        			

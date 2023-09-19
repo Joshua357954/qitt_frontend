@@ -25,13 +25,13 @@ const ProfileScreen = ({ className }) => {
 			        			</div>
 
 			        			<div className=" flex flex-col gap-2">
-			        				<h2 className="text-2xl font-bold">Griney</h2>
+			        				<h2 className="text-2xl font-bold">Joshua</h2>
 			        				<div className="bg-gray-100 p-1 w-[76px] text-sm rounded-lg flex items-center gap-2"><Attachement className="text-gray-700"/> 12823</div>
 			        				<p className="truncate">boyijoshua72@gmail.com</p>
 			        			</div>
 			        		</div>
 
-			        		<div className="w-full text-gray-800 sm:w-[67%] bg-yellow-400 sm:bg-yellow-300 font-bold border-[1px] border-gray-800 p-3 flex justify-center items-center rounded "> Account Settings </div>
+			        		<div className="w-full sm:w-[67%] bg-yellow-400 sm:bg-yellow-300 font-bold border-[1px] border-gray-900 p-3 flex justify-center items-center rounded text-black"> Account Settings </div>
 
 		        		</div>
 
