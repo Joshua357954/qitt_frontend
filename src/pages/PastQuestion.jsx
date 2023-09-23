@@ -18,12 +18,12 @@ const PastQuestion = ({ className }) => {
         	
 
 
-        	<div className="w-full h-20  mt-5 px-1 ">
-        		<div className="w-[70%] sm:w-[40%] bg-gray-100 h-[80%] px-1 rounded  py-1 ">
+        	<div className="w-full h-20  mt-5 px-2 ">
+        		<div className="w-[70%] sm:w-[40%] bg-gray-200 h-[80%] px-[4px] rounded  py-1 ">
 	        		<div className="flex items-center text-center rounded w-full  h-full ">
-	        			<div onClick={() => setSelection('courses')} className={`w-[49%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'courses' ? 'font-bold bg-blue-400' : ''} flex items-center justify-center`}>Courses</div>
-	        			<div className="w-2 bg-gray-100 h-full rounded"></div>
-	        			<div onClick={() => setSelection('practice')} className={`w-[49%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'practice' ? 'font-bold bg-blue-400' : ''} flex items-center justify-center`}>Practice</div>
+	        			<div onClick={() => setSelection('courses')} className={`w-[48%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'courses' ? 'font-bold bg-blue-300' : ''} flex items-center justify-center`}>Courses</div>
+	        			<div className="w-2 bg-gray-200 h-full rounded"></div>
+	        			<div onClick={() => setSelection('practice')} className={`w-[48%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'practice' ? 'font-bold bg-blue-300' : ''} flex items-center justify-center`}>Practice</div>
 	        		</div>
         		</div>
         	</div>
@@ -34,7 +34,7 @@ const PastQuestion = ({ className }) => {
     			
         			{ cours.map((item,idx) => {
         				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
-		        				<div className="w-14 h-14 rounded-xl full  bg-blue-400"></div>
+		        				<div className="w-14 h-14 rounded-xl full  bg-indigo-400"></div>
 		        				<div className="flex flex-col">
 			        				<div className="font-bold">STA 190</div>
 			        				<div className="font-light">4 documents | PDF </div>
