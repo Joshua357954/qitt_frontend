@@ -6,8 +6,8 @@ import { FaChevronRight as Arrow } from 'react-icons/fa';
 const PastQuestion = ({ className }) => {
 	const [selection,setSelection] = useState('courses')
 
-	const [course,setCourse] = useState('')
-	const [time,setTime] = useState('')
+	const [course,setCourse] = useState('GES 101')
+	const [time,setTime] = useState('10 mins')
 
 	const cours = [0,0,0,0,0,]
     return (
@@ -51,11 +51,11 @@ const PastQuestion = ({ className }) => {
     				<div className="flex gap-x-4">
 	    				<h2>Course : </h2>
 	        			<select onChange={({target}) => setCourse(target.value) } className="bg-transparent flex focus:outline-none"name="api-verbs">
+							<option value='GES 100'>GES 101</option>
 							<option value='STA 126'>STA 126</option>
 							<option value='MATHS 114'>MATHS 114</option>
 							<option value='MATHS 124'>MATHS 124</option>
 							<option value='PHY 178'>PHY 178</option>	
-							<option value='GES 100'>GES 100</option>	
 						</select>
 					</div>
 

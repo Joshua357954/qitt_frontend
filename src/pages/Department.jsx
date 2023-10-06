@@ -10,6 +10,32 @@ const Department = ({ className }) => {
 		{name:'Divine',pix:'',exco:'Course Rep.'},
 		{name:'David',pix:'',exco:''},
 	]
+
+	const corses = [
+		{name:"GES 101.2",discription:"Computer Appreciation and Applications",lecturers:[]},
+		{name:"GES 103.2",discription:"Nigeria people and cultures",lecturers:[]},
+		{name:"CSC 182.2",discription:"Computer Applications",lecturers:[]},
+		{name:"CSC 183.2",discription:"Introduction to problem solving using python language",lecturers:[]},
+		{name:"MTH 114.2",discription:"Introduction to set, logic and Numbers",lecturers:[]},
+		{name:"MTH 124.2",discription:"Coordinate Geometry",lecturers:['Dr. Alim']},
+		{name:"PHY 112.2",discription:"Introduction to Electricity and Magnetism",lecturers:[]},
+		{name:"PHY 103.2",discription:"Laboratory Practices II",lecturers:[]},
+		{name:"STA 160.2",discription:"Discriptive Statistics",lecturers:[]},
+		{name:"STA 190.2",discription:"Statistics Practical",lecturers:[]},
+
+	] 
+
+	const excos = [
+		{name:"Divine Amafor",title:"Coures Representative"},
+		{name:"Joy-Cliff Chinazaekpere",title:"Assistant Coures Representative"},
+		{name:"Phildora Clerkson",title:"Treasurer"},
+		{name:"Monalisa",title:"Director of Socials"},
+		{name:"Wallcot",title:"Director of Sports"},
+		{name:"Tamar",title:"Director of Welfare"},
+		{name:"Monalisa",title:"Director of Socials"},
+		{name:"Pheobe",title:"Director of Information"},
+	]
+
     return (
         <main className="w-screen h-screen select-none"> 
         	
@@ -53,12 +79,12 @@ const Department = ({ className }) => {
 				{section == 'excos' ? 
         			<section className="w-full pt-5">
         			
-	        			{ clas.map((item,idx) => {
+	        			{ excos.map((item,idx) => {
 	        				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
-			        				<div className="w-14 h-14 rounded-full  bg-blue-900"></div>
+			        				<div className="w-14 h-14 rounded-full  bg-gray-600"></div>
 			        				<div className="flex flex-col">
-				        				<div className="font-bold">Divine Amafor</div>
-				        				<div className="font-light">Course Representative </div>
+				        				<div className="font-bold">{item.name}</div>
+				        				<div className="font-light">{item.title}</div>
 				        			</div>
 			        			</div>
 			        		})
@@ -70,15 +96,16 @@ const Department = ({ className }) => {
 				{section == 'courses' ? 
         			<section className="w-full">
 
-		        		<div className="w-full pt-5">
+		        		<div className="w-full pt-5 pl-1">
 		        			
 		        			
-		        			{ clas.map((item,idx) => {
-		        				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
-				        				<div className="w-14 h-14 rounded-xl  bg-blue-900"></div>
+		        			{ corses.map((item,idx) => {
+		        				return <div key={idx} className="mb-3 border-l-[4px] border-gray-500 hover:bg-gray-50 pl-3 py-2 flex items-center gap-y-4">
+				        				<div className="max-w-14 max-h-14 rounded-xl  bg-blue-900"></div>
 				        				<div className="flex flex-col">
-					        				<div className="font-bold">CSC 132</div>
-					        				<div className="font-light">Data Processing and fundamentals of computing</div>
+					        				<div className="font-black  text-lg">{item.name}</div>
+					        				<div className="font-light">{item.discription}</div>
+					        				{item.lecturers[0] && <div className="flex gap-x-2 items-center font-bold"><div className="w-3 h-3 rounded-full bg-blue-500"></div>{item.lecturers[0]}</div>}
 					        			</div>
 				        			</div>
 				        		})
