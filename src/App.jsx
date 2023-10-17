@@ -16,7 +16,7 @@ import PastQuestionScreen from './pages/PastQuestion.jsx'
 import QuizScreen from './pages/QuizScreen.jsx'
 import ScoreBoardScreen from './pages/ScoreBoard.jsx'
 
-import AdminScreen from './pages/screens/HomeScreen.jsx'
+import AdminScreen from './pages/screens/User/Users.jsx'
 
 import AdminAssignmentScreen from './pages/screens/Assignment/AssignmentScreen.jsx'
 import UpdateAssignmentScreen from './pages/screens/Assignment/UpdateAssignment.jsx'

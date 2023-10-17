@@ -15,7 +15,9 @@ const SideNav = () => {
 		{name: 'Users',icon:<Friends className="text-xl  text-yellow-300 "/>, route:'/admin'},
 		{name:"Timetable",icon:<Time className="text-xl  text-yellow-300 "/>, route:'/admin/timetable'},
 		{name:"Assignment",icon:<Assign className="text-xl text-yellow-300 "/>, route:'/admin/assignment'},
-		{name:"Feedback",icon:<Chat className="text-xl  text-yellow-300 "/>, route:'/admin/feedback'},
+		{name:"Past Questions",icon:<Tool className="text-xl  text-yellow-300 "/>, route:'/admin/feedback'},
+        {name:"Feedback",icon:<Chat className="text-xl  text-yellow-300 "/>, route:'/admin/feedback'},
+
 	]
 
     return (
@@ -28,7 +30,7 @@ const SideNav = () => {
 
         	<div className="w-full h-full px-2 pt-4">
         	{SideNav_Items.map((item, index)=> {
-				return <Link to={item.route} key={index} className="text-sm bg-black bg-opacity-80 text-black rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
+				return <Link to={item.route} key={index} className=" hover:text-gray-300 text-sm focus:text-gray-400 active:text-gray-300 bg-black bg-opacity-80 text-black rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
 		        })
         	}
         	</div>

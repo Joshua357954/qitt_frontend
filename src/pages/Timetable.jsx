@@ -102,4 +102,25 @@ const TimetableScreen = ({ className }) => {
     );
 };
 
+
+// const carousel = document.querySelector('.carousel');
+// const container = document.querySelector('.carousel-container');
+// const slides = document.querySelectorAll('.carousel-slide');
+
+// let startX, isDragging = false, currentIndex = 0, translateX = 0;
+
+// carousel.addEventListener('touchstart', (e) => (isDragging = true, startX = e.touches[0].clientX));
+// carousel.addEventListener('touchmove', (e) => isDragging && (translateX += e.touches[0].clientX - startX, container.style.transform = `translateX(${translateX}px)`, startX = e.touches[0].clientX));
+// carousel.addEventListener('touchend', () => {
+//     if (!isDragging) return;
+//     isDragging = false;
+//     const threshold = 100, slideWidth = slides[0].offsetWidth;
+//     currentIndex += (translateX / slideWidth > 0.5) ? -1 : (translateX / slideWidth < -0.5) ? 1 : 0;
+//     currentIndex = Math.min(Math.max(currentIndex, 0), slides.length - 1);
+//     translateX = -currentIndex * slideWidth;
+//     container.style.transform = `translateX(${translateX}px)`;
+// });
+
+// window.addEventListener('resize', () => (translateX = -currentIndex * slides[0].offsetWidth, container.style.transform = `translateX(${translateX}px)`));
+
 export default TimetableScreen;

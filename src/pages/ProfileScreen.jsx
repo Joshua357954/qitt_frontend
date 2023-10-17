@@ -25,9 +25,9 @@ const ProfileScreen = ({ className }) => {
 			        			</div>
 
 			        			<div className=" flex flex-col gap-2">
-			        				<h2 className="text-2xl font-bold">Joshua</h2>
+			        				<h2 className="text-2xl font-bold">David</h2>
 			        				<div className="bg-gray-100 p-1 w-[76px] text-sm rounded-lg flex items-center gap-2"><Attachement className="text-gray-700"/> 12823</div>
-			        				<p className="truncate">boyijoshua72@gmail.com</p>
+			        				<p className="truncate">david112@gmail.com</p>
 			        			</div>
 			        		</div>
 
@@ -48,7 +48,7 @@ const ProfileScreen = ({ className }) => {
 
 			        			<div className="flex flex-col pl-4">
 				        			<p className="font-bold">Birthday</p> 
-				        			<p className="font-light">12 May</p>
+				        			<p className="font-light">15 June</p>
 			        			</div>
 
 			        		</fieldset>
@@ -65,12 +65,12 @@ const ProfileScreen = ({ className }) => {
 
 			        			<div className="flex w-[40%] flex-col pl-3  p ">
 				        			<p className="font-bold">Department</p> 
-				        			<p title="Computer Science" className="cursor-pointer font-light">CSC</p>
+				        			<p title="Computer Science" className="cursor-pointer font-light">AEB</p>
 			        			</div>
 
 			        			<div className="flex w-[30%] flex-col pl-4 border-l-2 border-gray-400">
 				        			<p className="font-bold">Level</p> 
-				        			<p className="font-light">100 Lvl</p>
+				        			<p className="font-light">300 Lvl</p>
 			        			</div>
 
 			        		</fieldset>
