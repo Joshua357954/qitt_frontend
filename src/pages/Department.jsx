@@ -15,7 +15,7 @@ const Department = ({ className }) => {
 		{name:"GES 101.2",discription:"Computer Appreciation and Applications",lecturers:[]},
 		{name:"GES 103.2",discription:"Nigeria people and cultures",lecturers:[]},
 		{name:"CSC 182.2",discription:"Computer Applications",lecturers:[]},
-		{name:"CSC 183.2",discription:"Introduction to problem solving using python language",lecturers:[]},
+		{name:"CSC 183.2",discription:"Introduction to problem solving using python language",lecturers:['Dr Linda']},
 		{name:"MTH 114.2",discription:"Introduction to set, logic and Numbers",lecturers:[]},
 		{name:"MTH 124.2",discription:"Coordinate Geometry",lecturers:['Dr. Alim']},
 		{name:"PHY 112.2",discription:"Introduction to Electricity and Magnetism",lecturers:[]},
@@ -32,7 +32,6 @@ const Department = ({ className }) => {
 		{name:"Monalisa",title:"Director of Socials"},
 		{name:"Wallcot",title:"Director of Sports"},
 		{name:"Tamar",title:"Director of Welfare"},
-		{name:"Monalisa",title:"Director of Socials"},
 		{name:"Pheobe",title:"Director of Information"},
 	]
 
