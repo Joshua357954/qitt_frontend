@@ -111,7 +111,7 @@ const HomeScreen = () => {
 	        	
 	        	{/* Top Section */}
 	        		<div className="imgg relative w-full h-[34%] sm:h-[55%] border-[2px] border-black flex rounded-lg bg-transparent px-2 sm:pt-5">
-	        			<h2 className="font-extrabold text-4xl sm:text-5xl wt text-black mt-5 p-2 drop-shadow-2xl ">Hi, David</h2>
+	        			<h2 className="font-extrabold text-4xl sm:text-5xl wt text-black mt-5 p-2 drop-shadow-2xl ">Hi, Josh</h2>
 	        			
 	        			<div className="absolute top-[1px] right-0 w-[43%] sm:w-[40%] flex flex-col gap-y-2 pt-2 pr-2">
 		        			
@@ -143,7 +143,7 @@ const HomeScreen = () => {
 		     
 			        				<div className="flex flex-col">  
 				        				<h2 className="text-xl font-extrabold mb-2 text-black">{item.title}</h2>
-				        				<p className="font-light text-gray-900 text-[14px]">{item.discription}</p>
+				        				<p className="font-light text-gray-900 text-[14px] ">{item.discription}</p>
 									</div>
 		
 			        			</Link>

@@ -21,7 +21,7 @@ const PastQuestion = ({ className }) => {
         	<div className="w-full h-20  mt-5 px-2 ">
         		<div className="w-[70%] sm:w-[40%] bg-gray-200 h-[80%] px-[4px] rounded  py-1 ">
 	        		<div className="flex items-center text-center rounded w-full  h-full ">
-	        			<div onClick={() => setSelection('courses')} className={`w-[48%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'courses' ? 'font-bold bg-blue-300' : ''} flex items-center justify-center`}>Courses</div>
+	        			<div onClick={() => setSelection('courses')} className={`w-[48%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'courses' ? 'font-bold bg-blue-300' : ''} flex items-center justify-center`}>Study</div>
 	        			<div className="w-2 bg-gray-200 h-full rounded"></div>
 	        			<div onClick={() => setSelection('practice')} className={`w-[48%] rounded h-full text-lg sm:text-lg text-gray-900 ${selection == 'practice' ? 'font-bold bg-blue-300' : ''} flex items-center justify-center`}>Practice</div>
 	        		</div>

@@ -25,7 +25,7 @@ const ProfileScreen = ({ className }) => {
 			        			</div>
 
 			        			<div className=" flex flex-col gap-2">
-			        				<h2 className="text-2xl font-bold">David</h2>
+			        				<h2 className="text-2xl font-bold">Josh</h2>
 			        				<div className="bg-gray-100 p-1 w-[76px] text-sm rounded-lg flex items-center gap-2"><Attachement className="text-gray-700"/> 12823</div>
 			        				<p className="truncate">boyijosh@gmail.com</p>
 			        			</div>
