@@ -3,7 +3,6 @@ import {
   RouterProvider,
 } from "react-router-dom"
 
-
 import HomeScreen from "./pages/HomeScreen.jsx"
 import AuthScreen from "./pages/AuthScreen.jsx"
 import FeedbackScreen from "./pages/FeedbackScreen.jsx"
@@ -12,6 +11,10 @@ import TimetableScreen from "./pages/Timetable.jsx"
 import DepartmentScreen from './pages/Department.jsx'
 import AssignmentScreen from './pages/AssignmentScreen.jsx'
 import AssignmentDetailScreen from './pages/AssignmentDetails.jsx'
+import Resources from './pages/Resources.jsx'
+import Library from './pages/Library.jsx'
+import Notice from './pages/Notice.jsx'
+import VerifyUser from './pages/verifyUser.jsx'
 import PastQuestionScreen from './pages/PastQuestion.jsx'
 import QuizScreen from './pages/QuizScreen.jsx'
 import ScoreBoardScreen from './pages/ScoreBoard.jsx'
@@ -32,14 +35,17 @@ const router = createBrowserRouter([
     
     {
       path: "/",
-      element: <HomeScreen /> ,
+      element: <AuthScreen /> ,
     },
 
     {
       path: "/auth",
-      element: <AuthScreen />,
+      element: <HomeScreen />,
     },
-
+    {
+      path: "/verifyUser/:id",
+      element: <VerifyUser />,
+    },
 
     {
       path: "/feedback",
@@ -79,7 +85,7 @@ const router = createBrowserRouter([
           element: <PastQuestionScreen />,
     },
       {
-          path: "/past_question_practice/:course/:time",
+          path: "/past_question_practice/:course/:time/:numberOfQuestions",
           element: <QuizScreen />,
     },
       {
@@ -87,8 +93,19 @@ const router = createBrowserRouter([
           element: <ScoreBoardScreen />,
     },
 
+      {
+          path: "/resources",
+          element: <Resources/>,
+    },
+      {
+          path: "/library",
+          element: <Library/>,
+    },
 
- 
+    {
+          path: "/notice",
+          element: <Notice/>,
+    },
 
     {
       path: "/admin",

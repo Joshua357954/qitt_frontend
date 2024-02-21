@@ -1,163 +1,135 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
+import MainLayout from '../components/MainLayout.jsx'
+
+
+// FaGraduationCap (fa6)
+import PastQA from '../assets/images/question-and-answer-svgrepo-com.svg'
+import Resources from '../assets/images/database-server-svgrepo-com.svg'
+import Department from '../assets/images/graduation-cap-svgrepo-com.svg'
+import Feed1 from '../assets/images/community-comments-svgrepo-com.svg'
+import Feed2 from '../assets/images/survey-rating-feedback-svgrepo-com.svg'
+import PastQuestion from '../assets/images/question-and-answer-svgrepo-com.svg'
 import { FiSend as SendIcon } from 'react-icons/fi'
 import { HiHome as Home } from 'react-icons/hi'
+import { RiTimerFlashLine as Timer} from 'react-icons/ri'
 import { TbCalendarTime as Time } from 'react-icons/tb'
-import { MdBook as Book, MdSchool as School, MdAssignment as Assign } from 'react-icons/md'
-import Imgg from '../assets/images/serious-girl (1).jpg'
+import { MdBook as Book,MdOutlineLocationOn as Location, MdSchool as School, MdAssignment as Assign } from 'react-icons/md'
 import { BsFillCameraFill as Camera,BsPlus,BsTools as Tool, BsChat as Chat, BsCheckLg as Check, BsTrashFill as Trash, BsEmojiSmile as Emoji, BsChevronRight as Arrow  } from 'react-icons/bs'
 import { ImAttachment as Attachement } from 'react-icons/im'
+import { baseUrl ,formatCode, formatTimetableEntry } from '../utils/utils.js'
 import { FaUserFriends as Friends, FaFacebookMessenger as Message } from 'react-icons/fa'
- 
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 const HomeScreen = () => {
 
-	const navbar_height = 17
+	const userData = useSelector((state) => state.user);
+	
+	const Classes = [{time:"9:00am - 11:00am",color:'bg-green-400',course:"GES 101",venue:"MBA 1",current:true},
+				{time:"11:00am - 1:30pm",color:'bg-orange-400',course:"Physcis 103",venue:"Physics Lab"},
+				{time:"12:00pm - 1:00pm",color:'bg-yellow-400',course:"STA 160",venue:"Maths Hall"}, 
+				{time:"3:00pm - 4:00pm",color:'bg-red-400',course:"CSC 183",venue:"Maths Hall"}, 
+		 ]
 
 
-	const Categories = [
-		{title: "Timetable",icon: <Time size={27} className="text-yellow-500 text-lg font-bold"/> ,link:'/timetable', discription: "Don't miss lectures anymore, with our top notch timetable", bg:"bg-yellow-100"},
-		{title: "Resources",icon: <Tool size={25} className="text-blue-500 text-lg font-bold"/> ,link:'/', discription: "Get all you need to stay up-to-date in school, coming ...", bg:"bg-blue-100"}
-	]
+	const dept = 'computer_science';
+	const year = '100';
+	const [timetableData, setTimetableData] = useState([]);
+	
+	useEffect(() => {
+	const fetchData = async () => {
+		try {
+		const response = await axios.get(`${baseUrl}/api/timetable/${dept}/${year}/MONDAY`);
+		console.log(response.data)
+		setTimetableData(response.data);
+		} catch (error) {
+		console.error('Error fetching timetable data:', error);
+		}
+	};
+
+	fetchData();
+	}, [baseUrl, dept, year]);
+
+	const sections = [
+	  {
+	    title: "Resources",
+	    description: "Get all the resources you need to get better",
+	    image: Resources,
+	    link:'/resources',
+	    gradientClass: "from-[#ff9800] to-orange-200",
+	  },
+	  {
+	    title: userData.courseName || 'Dept',
+	    description: "Top Educational Notch experience",
+	    image: Department,
+	    link:'/department',
+	    gradientClass: "from-[#2ecc71] to-green-200",
+	  },
+	  {
+	    title: "Past Q/A",
+	    description: "Empower with seamless assessments",
+	    image: PastQA,
+	    link:'/pastQuestion?q=practice',
+	    gradientClass: "from-[#f06292] to-pink-200",
+	  },
+	  {
+	    title: "Feedback",
+	    description: "Your Feedback is very important to us. #Qitt",
+	    image: Feed2,
+	    link:'/feedback',
+	    gradientClass: "from-[#3498db] to-blue-200",
+	  },
+	];
+
+	const shadowStyle = {
+		boxShadow: '0 0 10px rgba(0, 0, 0, 0.15  )'
+	};
+
+
     return (
 
-        <main className="h-[100vh] w-screen bg-white select-none">
-        	
+        <MainLayout route="">
+			{/* Properties Grid */}
+			<section className="w-full h-full flex flex-col bg-gray-50  ">
+				{/* inner Container*/}
+				<div className="w-full h-[65%] pt-0 sm:pt-0 pb-2 grid grid-cols-2 grid-rows-2 gap-3 sm:gap-6">
+					{/* Blocks */}
+					{sections.map((section, index) => (
+				        <Link to={section.link} key={index} style={shadowStyle} className={`w-full bg-gray-50 border-gray-100 flex flex-col p-3 pt-4 {section.gradientClass} h-full sm:h-full  rounded-md`}>
+				          <div className="w-full">
+				            <h2 className="font-bold text-gray-900 text-xl sm:text-2xl">{section.title}</h2>
+				            <p className="mt-1 text-sm font-normal text-gray-700">{section.description}</p>
+				        </div>
+				          {/* Second Partition*/}
+				          <div className="w-full flex justify-end items-end h-full">
+				            <img src={section.image} className="h-[65px] sm:h-[70px]" alt={`Section ${index}`} />
+				          </div>
+				        </Link>
+				      ))}
+				</div>
 
-        	<nav className={`w-full h-[14%] sm:h-[17%] bg-white flex px-6 sm:px-10 justify-between items-center `}>
-        		<div className="text-5xl font-extrabold select-none text-black">Qitt</div>
-        		<Link to='/auth' className="text-2xl hidden text-black hover:text-black sm:block"> Dashboard </Link>
-        		
+				<h2 className="font-semibold text-xl mt-4 my-2">Today's Classes</h2>
+				
+				<div className="bg-white w-full flex gap-2 pb-1 overflow-x-auto">
+				  {timetableData?.map((item, index) => (
+				    <div key={index} className="flex border-l-2 border-l-gray-400 flex-col gap-0 bg-gray-50 px-2 py-1 rounded border-2 border-gray-50">
+				      <p className="font-bold pl-[.1rem] flex justify-between" style={{ whiteSpace: 'nowrap' }}>{formatCode(item.course)} <span>{item.current ? "🔥" : "⌛"}</span></p>
+				      <div className="flex items-center">
+				        <Timer className="text-md text-[#FFDAB9]" />
+				        <p className="font-normal ml-2" style={{ whiteSpace: 'nowrap' }}>{formatTimetableEntry(item.time)}</p>
+				      </div>
+				      <div className="flex items-center">
+				        <Location className="text-lg text-[#8FBC8F] ]" />
+				        <p className="ml-2" style={{ whiteSpace: 'nowrap' }}>{item.venue}</p>
+				      </div>
+				    </div>
+				  ))}
+				</div>
+				
+			</section>
 
-        		<div className="flex gap-x-4 items-center">
-        			{/*<Link className="flex flex-col gap-y-1 border-2 border-gray-0700 bg-blue-100 rounded-md px-2 py-1 items-center">
-	        			<Camera className="text-blue-500"/> 
-	        			<p className="font-bold text-gray-700">Post</p>
-        			</Link>*/}
-
-	        		<Link to="profile">
-	        			<div className="w-16 h-16 border-[2px] border-orange-100 rounded-full bg-gray-400">
-			        		<img src={Imgg} className="w-full h-full rounded-full bg-cover  size"/>
-			        	</div> 
-	        		</Link>
-	        	</div>
-
-        	</nav>
-
-
-        	<section className={`flex  flex-col-reverse sm:flex-row  w-full h-[83%] sm:px-16 pb-1` }> 
-	        	
-	        	<aside className="absolute bottom-0 left-0 sm:bg-black opacity-95 sm:static sm:rounded-lg h-16 sm:h-full w-full sm:w-[30%] sm:border-r-2 border-gray-200 sm:px-5 px-1 flex flex-row sm:flex-col sm:justify-around justify-between items-center">
-	        	
-	        	<div className="text-white bg-black opacity-95 h-16 sm:h-full w-full  border-gray-200 sm:px-5 px-10 flex flex-row sm:flex-col rounded sm:justify-around justify-between items-center">
-	    
-	        		{/*<div className="hidden w-full bg-sky-50 py-4 px-4 flex gap-x-2 justify-between items-center rounded">
-	        			
-	        			<div className="flex items-center gap-x-2 text-[19px] text-gray-700 font-semibold">
-		        			<div className="w-9 h-9 rounded-full bg-gray-400">
-		        				<img src={Imgg} className="w-full h-full rounded-full bg-cover  size"/>
-		        			</div> 
-		        			Profile
-	        			</div>
-
-	        			<Arrow  className="text-[20px] font-bold text-gray-700"/>
-		        		
-	        		</div>
-					*/}
-
-	        		{/*<div className="hidden flex w-full flex-col gap-y-4">
-
-		        		<div className="text-gray-600 bg-gray-100  font-bold py-3 px-4 rounded-lg flex gap-x-2 items-center">
-		        			<Home  className="text-blue-400 text-[20px]"/> Home
-		        		</div>
-
-		        		<div  className="text-gray-100 bg-gray-0 py-3 px-4 rounded-lg flex gap-x-2 items-center">
-		        			<Friends  className="text-blue-400 text-[20px]"/> CSC	
-		        		</div>
-
-	        		</div>*/}
-
-	        		<Link to="/pastQuestion" className="flex flex-col items-center gap-y-1 px-3 py-4 rounded-lg  bg-gray-590"> 
-	        			<Book className="text-xl sm:text-2xl  bg-yellow-00 text-yellow-300 rounded-md"/>
-	        			<p className="text-gray-100 text-sm sm:text-lg font-semibold sm:font-bold">Past &nbsp; Q/A's</p>
-	        		</Link>
-
-	        		<div className="sm:px-4 ">
-	        			<div className="hidden sm:block">
-		        			
-		        			<div className="flex w-full gap-2 px-1"> 
-			        			<p className="font-bold text-white ">Feedback</p> 
-			        			<SendIcon  className="text-yellow-300 text-2xl"/>
-			        		</div>
-
-		        			<textarea className="text-white text-sm outline-none focus:border-none w-full bg-transparent p-1 resize-none focus:outline-none focus:border-2 border-l-gray-700" 
-		        			placeholder="Click to leave your reviews ..">
-		        				
-		        			</textarea>
-	        			</div>
-
-	        			<Link to="/feedback" className="sm:hidden flex gap-y-1 flex-col gap-y-1 items-center text-gray-800">
-		        			<SendIcon className="text-yellow-300 text-2xl"/>
-		        			<p className="text-gray-100 text-sm font-semibold sm:font-bold">Feedback</p>
-	        			</Link>
-
-	        		</div>
-					</div>
-	        	</aside>
-
-
-
-	        {/*  Right Panel */}
-	        	<section className="overflow-y-auto flex flex-col items-center gap-y-3 h-full w-full sm:w-[70%] px-2 py-0">
-	        	
-	        	{/* Top Section */}
-	        		<div className="imgg relative w-full h-[34%] sm:h-[55%] border-[2px] border-black flex rounded-lg bg-transparent px-2 sm:pt-5">
-	        			<h2 className="font-extrabold text-4xl sm:text-5xl wt text-black mt-5 p-2 drop-shadow-2xl ">Hi, Josh</h2>
-	        			
-	        			<div className="absolute top-[1px] right-0 w-[43%] sm:w-[40%] flex flex-col gap-y-2 pt-2 pr-2">
-		        			
-		        			<Link to="/assignment" className=" bg-black opacity-95 py-4 px-4  rounded-lg flex gap-x-2 items-center">
-			        			<Assign   className="text-xl font-bold text-yellow-400"/> 
-			        			<p className="truncate font-bold text-white">Assignment</p>
-			        		</Link> 
-
-			        		<Link to="/department" className="bg-black opacity-95 py-4 px-4  rounded-lg flex gap-x-2 items-center ">
-			        			<Friends  className=" text-[20px]  text-yellow-400"/>	
-			        			<p className="truncate font-bold text-white">CSC</p>
-			        		</Link>
-
-	        			</div>
-
-	        		</div>
-
-	        	{/* Categories */}
-	        		<div className="w-full h-[48%] pb-2 sm:pb-0 sm:h-[100%] flex justify-between">	
-	        			
-						{
-							Categories.map((item,idx) => {
-								
-								return <Link key={idx} to={item.link} className={`img ${item.bg} border-[2px] sm:border-[2px] border-black h-full w-[49%] rounded-lg bg-blue-30 px-2  py-6 flex flex-col justify-start gap-4`}>
-		        				
-			        				<div className={`${item.iconBg} ${item.bg} w-5/12 sm:w-3/12   flex justify-center items-center px-1 py-5 rounded-2xl`}> 
-				        				{item.icon}
-			        				</div>
-		     
-			        				<div className="flex flex-col">  
-				        				<h2 className="text-xl font-extrabold mb-2 text-black">{item.title}</h2>
-				        				<p className="font-light text-gray-900 text-[14px] ">{item.discription}</p>
-									</div>
-		
-			        			</Link>
-			        		})
-		        		}
-
-
-	        		</div>
-	 
-	        	</section>
-
-        	</section>
-
-        </main>
+		</MainLayout>
     );
 };
 
