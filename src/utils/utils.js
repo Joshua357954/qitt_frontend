@@ -1,4 +1,5 @@
-export const baseUrl = 'http://localhost:4000'
+
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://red-nutty-earthworm.cyclic.app' : 'http://localhost:4000';
 
 
 export const formatCode = code => code.replace(/([a-zA-Z]+)([0-9.]+)/, '$1 $2').toUpperCase();
