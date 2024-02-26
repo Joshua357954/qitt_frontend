@@ -8,7 +8,7 @@ import PageNav from '../components/PageNav.jsx'
 
 
 const AssignmentDetails = ({ className }) => {
-	const { course,date } = useParams()
+	const { course,dateGiven,deadline,content } = useParams()
     return (
         <MainLayout route={course}>
     		<div className="flex justify-center w-full flex-col h-[91%] sm:h-[87%]">
@@ -21,11 +21,11 @@ const AssignmentDetails = ({ className }) => {
     				</div>
     				
     				<div className="flex items-center gap-x-2 pt-3 ">
-    					<p className="font-light text-black"> Date Given : </p> <h2 className="text-xl font-semibold text-gray-800">{date}</h2>
+    					<p className="font-light text-black"> Date Given : </p> <h2 className="text-xl font-semibold text-gray-800">{dateGiven.split(' ').slice(-2).join(' ')} {'('+dateGiven.split(' ')[0]+')'}</h2>
     				</div>
 
                     <div className="flex items-center gap-x-2 pt-3 ">
-                        <p className="font-light text-black"> Submission Date : </p> <h2 className="text-xl font-semibold text-gray-800">July 3</h2>
+                        <p className="font-light text-black"> Submission Date : </p> <h2 className="text-xl font-semibold text-gray-800">{deadline.split(' ').slice(-2).join(' ')} {'('+deadline.split(' ')[0]+')'}</h2>
                     </div>
 
     				
@@ -38,6 +38,8 @@ const AssignmentDetails = ({ className }) => {
     					<ArrowD className="text-gray-700"/>
     				</div>
     			</div>
+
+				<p className='px-2 text-semibold mt-3'>{content}</p>
     		</div>
         </MainLayout>
     );

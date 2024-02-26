@@ -45,9 +45,9 @@ const NavBar = ({ route }) => {
 	    			<div className="flex flex-col ">
 	    				<div className="text-lg"> Hey,<span className="font-bold capitalize" > {getName(userData.name) || 'User'}</span></div>
 	    				<div className="flex font-light items-center gap-1 text-md  text-gray-700">
-	    					<div>{userData.courseName || userData.department}</div>
+	    					<div>{userData.courseName || userData.department || 'Qitt'}</div>
 	    					<div className="w-2 h-2 rounded-full bg-gray-800">&nbsp;</div>
-	    					<div>{getCurrentUniYear(userData.session)}00lvl</div>
+	    					<div>{getCurrentUniYear(userData.session)|| 0}00lvl</div>
 	    				</div>
 	    			</div>
 

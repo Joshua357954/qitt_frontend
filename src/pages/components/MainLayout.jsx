@@ -4,7 +4,7 @@ import SideNav from './SideNav.jsx'
 
 const MainLayoutScreen = ({children,screen,title,$return,selection }) => {
     return (
-       <main className="w-screen h-screen">
+       <main className="w-full h-full">
        	 <section className='w-full h-screen flex  bg-green-00'>
          	 	<SideNav route={screen}/>
        	

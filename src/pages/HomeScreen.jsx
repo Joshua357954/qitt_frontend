@@ -35,12 +35,15 @@ const HomeScreen = () => {
 
 	const dept = 'computer_science';
 	const year = '100';
+	const daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+	const currentDayIndex = new Date().getDay();
+	const currentDay = daysOfWeek[currentDayIndex];
 	const [timetableData, setTimetableData] = useState([]);
 	
 	useEffect(() => {
 	const fetchData = async () => {
 		try {
-		const response = await axios.get(`${baseUrl}/api/timetable/${dept}/${year}/MONDAY`);
+		const response = await axios.get(`${baseUrl}/api/timetable/${dept}/${year}/${currentDay}`);
 		console.log(response.data)
 		setTimetableData(response.data);
 		} catch (error) {

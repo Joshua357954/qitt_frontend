@@ -19,18 +19,19 @@ const SideNav = () => {
 	]
 
     return (
-        <aside className="h-full w-[20%] h-full bg-gray-200 flex pt-5 flex-col g">
-        	  <div className="w-full h-full px-2">
-        	<div className="flex flex-col w-full py-1 h-full justify-center items-center text-center bg-gray-200">
-       			<h1 className="font-black text-black">Qitt</h1>
-       			<p className="bg-red-600 w-fit text p-1 rounded text-gray-100"> Admin</p>
-	       	</div>
+        <aside className="w-[25%] h-full bg-gray-200 ">
+        	  <div className="w-full h-full px-2 flex flex-col gap-5 mt-7 item-center">
+				<div className="flex flex-col w-full py-1 h-fit justify-center items-center text-center bg-gray-200">
+					<h1 className="font-black text-black">Qitt</h1>
+					<p className="bg-red-600 w-fit text p-1 rounded text-gray-100"> Admin</p>
+				</div>
 
- 
-        	{SideNav_Items.map((item, index)=> {
-				return <Link to={item.route} key={index} className="bg-black bg-opacity-80 text-black rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
-		        })
-        	}
+				<div className='h-full w-full px-1'>
+					{SideNav_Items.map((item, index)=> {
+						return <Link to={item.route} key={index} className="bg-black bg-opacity-80 rounded py-4 px-2 text-white flex items-center gap-x-2 mt-1">{item.icon}{item.name}</Link>
+						})
+					}
+				</div>
         	</div>
         </aside>
     );

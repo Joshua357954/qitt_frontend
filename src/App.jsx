@@ -77,7 +77,7 @@ const router = createBrowserRouter([
           element: <AssignmentDetailScreen />,
     },
       {
-          path: "/assignment/:course/:date",
+          path: "/assignment/:course/:dateGiven/:deadline/:content",
           element: <AssignmentDetailScreen />,
     },
       {
