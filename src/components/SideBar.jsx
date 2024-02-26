@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Link } from 'react-router-dom'
 import { TbHome as Home, TbCalendarEvent as Events, TbBrandFeedly as Feed2 } from 'react-icons/tb'
-import { IoLibraryOutline as Library } from 'react-icons/Io5'
+
 import { LuLayoutDashboard as Home2, LuMessageSquare as Feedback, LuLogOut as Logout } from 'react-icons/lu'
 import { FiSend as SendIcon } from 'react-icons/fi'
 import { MdOutlineLocalLibrary as Library2 , MdBook as Book, MdSchool as School, MdOutlineAssignment as Assign } from 'react-icons/md'
