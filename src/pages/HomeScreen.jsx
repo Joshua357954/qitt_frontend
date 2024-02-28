@@ -44,23 +44,24 @@ const HomeScreen = () => {
 	useEffect(() => {
 
 		const fetchData = async () => {
-			try {
-				const response = await axios.get(`${baseUrl}/api/timetable/all/${dept}/${year}`);
-				// console.log(response.data.allTimetables);
-				dispatch(addTimetable((response.data.allTimetables)))
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-			};
-		fetchData();
-	}, [timetable == []]); 
+		  try {
+			const response = await axios.get(`${baseUrl}/api/timetable/all/${dept}/${year}`);
+			// console.log(response.data.allTimetables);
+			dispatch(addTimetable((response.data.allTimetables)))
+		  } catch (error) {
+			console.error('Error fetching data:', error);
+		  }
+		};
+		fetchData(); // Call the fetchData function when the component mounts
+	  }, []); 
 	
-	
-	const timetableData = () => {
+	  const timetableData = (timetable) => {
 		const foundDay = timetable.filter(item => Object.keys(item)[0].toLowerCase() == currentDay)
 		// timetable.find(dayObj => Object.keys(dayObj)[0] == currentDay);
-		return foundDay[0][currentDay.toUpperCase()]
-	};
+		// return foundDay[0][currentDay.toUpperCase()]
+		console.log(foundDay)
+		return foundDay[0] ? foundDay[0][currentDay.toUpperCase()] : [];
+	  };
 	  
 
 	const sections = [
@@ -124,7 +125,7 @@ const HomeScreen = () => {
 				<h2 className="font-semibold text-xl mt-4 my-2">Today's Classes</h2>
 				
 				<div className="bg-white w-full flex gap-2 pb-1 overflow-x-auto">
-				  {timetableData()?.map((item, index) => (
+				  {timetable && timetableData(timetable)?.map((item, index) => (
 				    <div key={index} className="flex border-l-2 border-l-gray-400 flex-col gap-0 bg-gray-50 px-2 py-1 rounded border-2 border-gray-50">
 				      <p className="font-bold pl-[.1rem] flex justify-between" style={{ whiteSpace: 'nowrap' }}>{formatCode(item.course)} <span>{item.current ? "🔥" : "⌛"}</span></p>
 				      <div className="flex items-center">
