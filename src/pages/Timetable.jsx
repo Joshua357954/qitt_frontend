@@ -6,62 +6,35 @@ import { BsChevronLeft as Arrow } from 'react-icons/bs'
 import { baseUrl, formatCode, formatTime } from '../utils/utils.js'
 import { FaChevronRight as AR,FaChevronLeft as AL } from 'react-icons/fa'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const TimetableScreen = ({ className }) => {
 
 	const [day,setDay] = useState('monday')
 	const [isExam,setIsExam] = useState(false)
+	const {timetable} = useSelector((state) => state.users)
 	const [daysClases,setDaysClasses] = useState([])
 
 
 	const dept = 'computer_science';
 	const year = '100';
 
-	useEffect(() => {
+	// useEffect(() => {
 
-		const fetchData = async () => {
-		  try {
-			const response = await axios.get(`${baseUrl}/api/timetable/all/${dept}/${year}`);
-			console.log(response.data.allTimetables);
-			setDaysClasses(response.data.allTimetables)
+	// 	const fetchData = async () => {
+	// 	  try {
+	// 		const response = await axios.get(`${baseUrl}/api/timetable/all/${dept}/${year}`);
+	// 		console.log(response.data.allTimetables);
+	// 		setDaysClasses(response.data.allTimetables)
 
-		  } catch (error) {
-			console.error('Error fetching data:', error);
-		  }
-		};
+	// 	  } catch (error) {
+	// 		console.error('Error fetching data:', error);
+	// 	  }
+	// 	};
 	
-		fetchData(); // Call the fetchData function when the component mounts
-	  }, []); 
-
-	// const daysClases = [
-	// 	{ 'monday': [ {time:"8:00am - 10:00am",color:'bg-green-400',course:"MTH 124",venue:"MBA 1"},
-	// 		{time:"10:00am - 12:00pm",color:'bg-orange-400',course:"STA 160",venue:"Maths Hall"},
-	// 		{time:"3:00pm - 5:00pm",color:'bg-yellow-400',course:"PHY 112",venue:"MBA 1"},
-	// 	 ] },
-
-	// 	{ 'tuesday': [ {time:"9:00am - 10:00am",color:'bg-green-400',course:"CSC 183",venue:"CSC Hall 2"},
-	// 			{time:"4:00pm - 5:00pm",color:'bg-orange-400',course:"MTH 114",venue:"MBA 1"},
-	// 	] },
-
-	// 	{ 'wednesday': [{time:"9:00am - 11:00am",color:'bg-green-400',course:"GES 101",venue:"MBA 1"},
-	// 			{time:"11:00am - 1:30pm",color:'bg-orange-400',course:"Physcis 103",venue:"Physics Lab"},
-	// 			{time:"12:00pm - 1:00pm",color:'bg-yellow-400',course:"STA 160",venue:"Maths Hall"}, 
-	// 			{time:"3:00pm - 4:00pm",color:'bg-red-400',course:"CSC 183",venue:"Maths Hall"}, 
-	// 	 ] },
-
-
-	// 	{ 'thursday': [{time:"9:00am - 11:00am",color:'bg-green-400',course:"MTH 114",venue:"MBA 1"},
-	// 			{time:"10:00am - 11:00am",color:'bg-orange-400',course:"STA 190",venue:"Maths Lab @Annex 2"}, 
-	// 			{time:"9:00am - 11:00am",color:'bg-yellow-400',course:"GES 103",venue:"Tetfund 7 in 1"},
-	// 			{time:"2:00pm - 4:00pm",color:'bg-red-400',course:"CSC 182",venue:"CSC Hall 2"},  
-	// 	  ] },
-
-	// 	{ 'friday': [ {time:"8:00am - 9:00am",color:'bg-green-400',course:"CSC 182",venue:"CSC Hall 2"},
-	// 			{time:"10:00am - 11:00am",color:'bg-orange-400',course:"PHY 112",venue:"MBA 1"}, 
-	// 			{time:"3:00pm - 5:00pm",color:'bg-yellow-400',course:"MTH 124",venue:"MBA 2"}, 
-	// 	  ] },
-	// ]
+	// 	fetchData(); // Call the fetchData function when the component mounts
+	//   }, []); 
 
 	const daa = {'name':'josh'}
 
@@ -107,7 +80,7 @@ const TimetableScreen = ({ className }) => {
 
     				<div className="px-2 flex  flex-col items-center w-full">
 	    				
-	    				{ daysClases && daysClases.map((item,idx) => {
+	    				{ timetable && timetable.map((item,idx) => {
 	    					var current_day = Object.keys(item)[0]
 	    					var day_classes = Object.values(item)
 

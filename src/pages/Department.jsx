@@ -6,6 +6,9 @@ import { BsChevronLeft as Arrow  } from 'react-icons/bs'
 import Nothing from './screens/Nothing.jsx'
 import { baseUrl } from '../utils/utils.js'
 import Axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { addCoursemates } from '../features/userSlice.js';
+
 
 const NameInitial = ({ name }) => {
 	// Extract the first letter of the name
@@ -20,8 +23,10 @@ const NameInitial = ({ name }) => {
 
 const Department = ({ className }) => {
 
+	const dispatch = useDispatch()
 	const [section,setSection] = useState('class')
-	const [courseMates, setCourseMates] = useState([])
+	const { coursemates } = useSelector((state) => state.users);
+
 
 	const clas = [
 		{name:'Joshua',pix:'',exco:''},
@@ -41,16 +46,6 @@ const Department = ({ className }) => {
 	] 
 
 
-	const excos = [
-		{name:"Divine Amafor",title:"Coures Representative"},
-		{name:"Joy-Cliff Chinazaekpere",title:"Assistant Coures Representative"},
-		{name:"Phildora Clerkson",title:"Treasurer"},
-		{name:"Monalisa",title:"Director of Socials"},
-		{name:"Wallcot",title:"Director of Sports"},
-		{name:"Tamar",title:"Director of Welfare"},
-		{name:"Pheobe",title:"Director of Information"},
-	]
-
 	const excoss = []
 
 	useEffect(() => {
@@ -59,7 +54,7 @@ const Department = ({ className }) => {
 			const response = await Axios.get(`${baseUrl}/api/user/getUsers/${department.toUpperCase()}`);
 			const users = response.data;
 			console.log(users)
-			setCourseMates(users);
+			dispatch(addCoursemates(users))
 			
 		  } catch (error) {
 			console.error('Error fetching users:', error.message);
@@ -67,7 +62,7 @@ const Department = ({ className }) => {
 		};
 		getUsersByDepartment('computer science');
 
-	}, [section=='class']);
+	}, [section=='class',coursemates == []]);
 
     return (
 		<MainLayout route="Department (CSC)">
@@ -92,7 +87,7 @@ const Department = ({ className }) => {
 
 		        		<div className="w-ful bg-gray-3000 h-[60%] pt-3 overscroll-y-auto">
 		        		{
-		        			courseMates && courseMates?.map((item,idx) => {
+		        			coursemates && coursemates?.map((item,idx) => {
 		        			  	return <div className="pb-2 flex items-center gap-x-4 px-2">
 			        				{/* <div className="w-14 h-14 rounded-full shadow-lg border-2 border-purple-300  bg-purple-100">
 										<img src={item.imgUrl} className='w-full h-full object-cover rounded-full'/>

@@ -20,11 +20,13 @@ import { ImAttachment as Attachement } from 'react-icons/im'
 import { baseUrl ,formatCode, formatTimetableEntry } from '../utils/utils.js'
 import { FaUserFriends as Friends, FaFacebookMessenger as Message } from 'react-icons/fa'
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTimetable } from '../features/userSlice.js';
 
 const HomeScreen = () => {
-
+	const dispatch = useDispatch()
 	const userData = useSelector((state) => state.user);
+	const { timetable } = useSelector((state) => state.users)
 	
 	const Classes = [{time:"9:00am - 11:00am",color:'bg-green-400',course:"GES 101",venue:"MBA 1",current:true},
 				{time:"11:00am - 1:30pm",color:'bg-orange-400',course:"Physcis 103",venue:"Physics Lab"},
@@ -37,22 +39,29 @@ const HomeScreen = () => {
 	const year = '100';
 	const daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 	const currentDayIndex = new Date().getDay();
-	const currentDay = daysOfWeek[currentDayIndex];
-	const [timetableData, setTimetableData] = useState([]);
-	
-	useEffect(() => {
-	const fetchData = async () => {
-		try {
-		const response = await axios.get(`${baseUrl}/api/timetable/${dept}/${year}/${currentDay}`);
-		console.log(response.data)
-		setTimetableData(response.data);
-		} catch (error) {
-		console.error('Error fetching timetable data:', error);
-		}
-	};
+	const currentDay = daysOfWeek[currentDayIndex].toLowerCase();
 
-	fetchData();
-	}, [baseUrl, dept, year]);
+	useEffect(() => {
+
+		const fetchData = async () => {
+			try {
+				const response = await axios.get(`${baseUrl}/api/timetable/all/${dept}/${year}`);
+				// console.log(response.data.allTimetables);
+				dispatch(addTimetable((response.data.allTimetables)))
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+			};
+		fetchData();
+	}, [timetable == []]); 
+	
+	
+	const timetableData = () => {
+		const foundDay = timetable.filter(item => Object.keys(item)[0].toLowerCase() == currentDay)
+		// timetable.find(dayObj => Object.keys(dayObj)[0] == currentDay);
+		return foundDay[0][currentDay.toUpperCase()]
+	};
+	  
 
 	const sections = [
 	  {
@@ -115,7 +124,7 @@ const HomeScreen = () => {
 				<h2 className="font-semibold text-xl mt-4 my-2">Today's Classes</h2>
 				
 				<div className="bg-white w-full flex gap-2 pb-1 overflow-x-auto">
-				  {timetableData?.map((item, index) => (
+				  {timetableData()?.map((item, index) => (
 				    <div key={index} className="flex border-l-2 border-l-gray-400 flex-col gap-0 bg-gray-50 px-2 py-1 rounded border-2 border-gray-50">
 				      <p className="font-bold pl-[.1rem] flex justify-between" style={{ whiteSpace: 'nowrap' }}>{formatCode(item.course)} <span>{item.current ? "🔥" : "⌛"}</span></p>
 				      <div className="flex items-center">

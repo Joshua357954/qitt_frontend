@@ -10,11 +10,15 @@ import Assignment from '../assets/images/assignment-svgrepo-com.svg'
 import { BsImage, BsChevronLeft as Arrow  } from 'react-icons/bs'
 import { baseUrl, convertToTime, fDate, fbTime, getDay } from '../utils/utils.js';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { addAssignments } from '../features/userSlice.js';
 
  
 const AssignmentScreen = ({ className }) => {
 
 	const data1 = [{color:'red'},{color:'orange'},{color:'yellow'},{color:'green'},{color:'blue'},{color:'indigo'},{color:'violet'}]
+	const dispatch = useDispatch()
+	const { assignments } = useSelector((state)=> state.users)
 
 	const num = {
 		'0': <Zero className="text-blue-500 text-xl" />,
@@ -28,7 +32,7 @@ const AssignmentScreen = ({ className }) => {
 		'8': <Eight className="text-blue-500 text-xl" />,
 		'9': <Nine className="text-blue-500 text-xl" />,
 	  };
-	  const [assignments, setAssignments] = useState([]);
+	//   const [assignments, setAssignments] = useState([]);
 	  const department = 'computer_science';
 	  const year = '100';
 	
@@ -36,8 +40,9 @@ const AssignmentScreen = ({ className }) => {
 		const fetchAssignments = async () => {
 		  try {
 			const response = await axios.get(`${baseUrl}/api/assignments/${department}/${year}`);
-			console.log(response.data)
-			setAssignments(response.data);
+			// console.log(response.data)
+			dispatch(addAssignments((response.data)))
+
 		  } catch (error) {
 			console.error('Error getting assignments:', error.message);
 		  }
