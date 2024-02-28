@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageNav from '../components/PageNav.jsx'
 import MainLayout from '../components/MainLayout.jsx'
 import { BsChevronLeft as Arrow  } from 'react-icons/bs'
+import Nothing from './screens/Nothing.jsx'
+import { baseUrl } from '../utils/utils.js'
+import Axios from 'axios'
 
 const Department = ({ className }) => {
+
 	const [section,setSection] = useState('class')
+	const [courseMates, setCourseMates] = useState([])
+
 	const clas = [
 		{name:'Joshua',pix:'',exco:''},
 		{name:'Divine',pix:'',exco:'Course Rep.'},
@@ -13,18 +19,16 @@ const Department = ({ className }) => {
 	]
 
 	const corses = [
-		{name:"GES 101.2",discription:"Computer Appreciation and Applications",lecturers:[]},
-		{name:"GES 103.2",discription:"Nigeria people and cultures",lecturers:[]},
-		{name:"CSC 182.2",discription:"Computer Applications",lecturers:[]},
-		{name:"CSC 183.2",discription:"Introduction to problem solving using python language",lecturers:['Dr Linda']},
-		{name:"MTH 114.2",discription:"Introduction to set, logic and Numbers",lecturers:[]},
-		{name:"MTH 124.2",discription:"Coordinate Geometry",lecturers:['Dr. Alim']},
-		{name:"PHY 112.2",discription:"Introduction to Electricity and Magnetism",lecturers:[]},
-		{name:"PHY 103.2",discription:"Laboratory Practices II",lecturers:[]},
-		{name:"STA 160.2",discription:"Discriptive Statistics",lecturers:[]},
-		{name:"STA 190.2",discription:"Statistics Practical",lecturers:[]},
-
+		{name: 'MTH270.1 ', discription: ' Numerical analysis'},
+		{name: 'MTH210.1', discription: 'Linear Algebra'},
+		{name: 'STA260.1 ', discription: ' introduction to probability and statistics'},
+		{name: 'CSC280.1 ', discription: ' introduction to Computer programming (Fotran)'},
+		{name: 'CSC281.1 ', discription: ' computer system fundamentals'},
+		{name: 'CSC283.1 ', discription: ' introduction to information systems and File structures'}, 
+		{name: 'CSC284.1 ', discription: ' introduction to Logic Design'}, 
+		{name: 'CSC288.1 ', discription: ' Structured programming'}
 	] 
+
 
 	const excos = [
 		{name:"Divine Amafor",title:"Coures Representative"},
@@ -35,6 +39,24 @@ const Department = ({ className }) => {
 		{name:"Tamar",title:"Director of Welfare"},
 		{name:"Pheobe",title:"Director of Information"},
 	]
+
+	const excoss = []
+
+	useEffect(() => {
+		const getUsersByDepartment = async (department) => {
+		  try {
+			const response = await Axios.get(`${baseUrl}/api/user/getUsers/${department.toUpperCase()}`);
+			const users = response.data;
+			console.log(users)
+			setCourseMates(users);
+			
+		  } catch (error) {
+			console.error('Error fetching users:', error.message);
+		  }
+		};
+		getUsersByDepartment('computer science');
+
+	}, [section=='class']);
 
     return (
 		<MainLayout route="Department (CSC)">
@@ -51,44 +73,60 @@ const Department = ({ className }) => {
 
         		{section == 'class' ? 
         			<section className="w-full">
-		        		<div className="px-2 h-[6%] bg-gren-100 flex gap-x-3 my-3">
+		        		<div className="px-4 h-[6%] bg-gren-100 flex gap-x-5 my-4">
 		        			<Link to="/timetable" className="text-gray-600 underline underline-offset-2">Timetable</Link>
-		        			<Link to="/assignment" className="text-gray-600 underline underline-offset-2">Assignment</Link>
-		        			<p className="underline underline-offset-2">Student(280)</p>
+		        			<Link to="/assignment" className="text-gray-600 underline underline-offset-2">Assignments</Link>
+		        			{/* <p className="underline underline-offset-2">Student(280)</p> */}
 		        		</div>
 
 		        		<div className="w-ful bg-gray-3000 h-[60%] pt-5 overscroll-y-auto">
 		        		{
-		        			clas.map((item,idx) => {
+		        			courseMates && courseMates?.map((item,idx) => {
 		        			  	return <div className="pb-2 flex items-center gap-x-4 px-2">
-			        				<div className="w-14 h-14 rounded-full  bg-purple-100"></div>
+			        				<div className="w-14 h-14 rounded-full shadow-lg border-2 border-purple-300  bg-purple-100">
+										<img src={item.imgUrl} className='w-full h-full object-cover rounded-full'/>
+									</div>
 			        				<div className="flex flex-col">
 				        				<div className="font-bold">{item.name}</div>
 				        				{!item.exco ? "" : <div className="font-light">{item.exco}</div>}
 				        			</div>
 		        			</div>
 			        		})
-		        		}
+						}
+						
+						<div class="p-4 ">
+							<p class="mb-2 text-lg">
+								Please invite your course mates to join if the class list is not complete.
+							</p>
+							<p class="mb-4 text-lg">
+								Alternatively, you can also <a href="https://api.whatsapp.com/send?text=📚 Stay%20up%20to%20date%20with%20school%20activities%20by%20joining%20Qitt%20at%20https://qitt.com.ng" target="_blank" class="text-blue-500">send a WhatsApp message</a>.
+							</p>
+						</div>
+
+		        		
 		        		</div>
 		        	</section>
 				: "" }
 
 
 				{section == 'excos' ? 
-        			<section className="w-full pt-5">
+        			// <section className="w-full pt-5">
         			
-	        			{ excos.map((item,idx) => {
-	        				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
-			        				<div className="w-14 h-14 rounded-full  bg-gray-600"></div>
-			        				<div className="flex flex-col">
-				        				<div className="font-bold">{item.name}</div>
-				        				<div className="font-light">{item.title}</div>
-				        			</div>
-			        			</div>
-			        		})
-		        		}
-		        	</section>
-				: "" }
+	        		// 	{ excoss.map((item,idx) => {
+	        		// 		return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
+			        // 				<div className="w-14 h-14 rounded-full  bg-gray-600"></div>
+			        // 				<div className="flex flex-col">
+				    //     				<div className="font-bold">{item.name}</div>
+				    //     				<div className="font-light">{item.title}</div>
+				    //     			</div>
+			        // 			</div>
+			        // 		})
+		        	// 	}
+		        	// </section>
+				
+				<Nothing name="Excos"/>
+				: ""
+				}
 
 
 				{section == 'courses' ? 
@@ -99,11 +137,14 @@ const Department = ({ className }) => {
 		        			
 		        			{ corses.map((item,idx) => {
 		        				return <div key={idx} className="mb-3 border-l-[4px] border-gray-500 hover:bg-gray-50 pl-3 py-2 flex items-center gap-y-4">
-				        				<div className="max-w-14 max-h-14 rounded-xl  bg-blue-900"></div>
+				        				<div className="max-w-14 max-h-14 rounded-xl  bg-blue-900">
+											<img src={item.imgUrl} className='w-full h-full object-cover rounded-full'/>
+										</div>
+										
 				        				<div className="flex flex-col">
 					        				<div className="font-black  text-lg">{item.name}</div>
 					        				<div className="font-light">{item.discription}</div>
-					        				{item.lecturers[0] && <div className="flex gap-x-2 items-center font-bold"><div className="w-3 h-3 rounded-full bg-blue-500"></div>{item.lecturers[0]}</div>}
+					        				{/* {item.lecturers[0] && <div className="flex gap-x-2 items-center font-bold"><div className="w-3 h-3 rounded-full bg-blue-500"></div>{item.lecturers[0]}</div>} */}
 					        			</div>
 				        			</div>
 				        		})
