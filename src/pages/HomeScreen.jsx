@@ -22,6 +22,7 @@ import { FaUserFriends as Friends, FaFacebookMessenger as Message } from 'react-
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTimetable } from '../features/userSlice.js';
+import toast, { Toaster } from 'react-hot-toast';
 
 const HomeScreen = () => {
 	const dispatch = useDispatch()
@@ -59,7 +60,7 @@ const HomeScreen = () => {
 		const foundDay = timetable.filter(item => Object.keys(item)[0].toLowerCase() == currentDay)
 		// timetable.find(dayObj => Object.keys(dayObj)[0] == currentDay);
 		// return foundDay[0][currentDay.toUpperCase()]
-		console.log(foundDay)
+		// console.log(foundDay)
 		return foundDay[0] ? foundDay[0][currentDay.toUpperCase()] : [];
 	  };
 	  
@@ -141,7 +142,7 @@ const HomeScreen = () => {
 				</div>
 				
 			</section>
-
+		<Toaster/>
 		</MainLayout>
     );
 };

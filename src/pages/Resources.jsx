@@ -72,7 +72,7 @@ const Resources = ({ className }) => {
     return (
         <MainLayout route="Resources">
    			<section className="flex flex-col gap-10 w-full h-full ">
-	   			<div className="w-full  h-14 overflow-x-auto flex justify-start sm:justify-center gap-2">
+	   			 <div className="w-full  h-14 overflow-x-auto flex justify-start sm:justify-center gap-2">
 	   				{  
 	   					resourcesData.map((item,index)=>{
 	   						return <div onClick={() => setResource(item.category)} className={`p-3 ${item.category == resourceName ? 'px-4 font-bold border ':""} flex gap-1 items-center rounded-xl bg-gray-50 `}>
@@ -83,13 +83,21 @@ const Resources = ({ className }) => {
   
 	   			</div>
 
+				{/*
 	   			<div className="w-full bg-green-4000 gap-6 h-full grid grid-cols-2 ">
 	   				<ResourcesCard/>
 	   				<ResourcesCard/>
 	   				<ResourcesCard/>
 	   				<ResourcesCard/>
 	   				<ResourcesCard/>
-	   			</div>
+	   			</div> */}
+				<div className="flex items-center justify-center">
+					<p className="text-lg text-gray-600">
+						Oops! It looks like <strong>we're all out of resources</strong> for now. <br />
+						Don't worry, new content is on the way! 🚀 Check back later. ⏰
+					</p>
+				</div>
+
    			</section>
         </MainLayout>
     );

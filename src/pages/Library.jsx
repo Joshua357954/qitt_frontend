@@ -58,15 +58,21 @@ const Library = ({ className }) => {
 				}
 				</div>
 
-	        	<section className="w-full sm:w-[90%] sm:mx-auto flex flex-col justify-center ">
+	        	{/* <section className="w-full sm:w-[90%] sm:mx-auto flex flex-col justify-center ">
 	        		
 	        		{
 	        			libraryData.map(()=> {
 	        				return <LibraryCard/>
 	        			})
 	        		}
-	        	</section>
+	        	</section> */}
 
+			<div className="text-center mt-8">
+				<p className="text-lg text-gray-600">
+					This feature helps you <strong>reduce excess PDFs on your phone</strong> and enables you to view them offline in the app.
+				</p>
+				<p className="text-lg text-gray-600 mt-2">Coming Soon 🚀</p>
+			</div>
         	</section>
 
         </MainLayout>
