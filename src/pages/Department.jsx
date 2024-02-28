@@ -7,6 +7,17 @@ import Nothing from './screens/Nothing.jsx'
 import { baseUrl } from '../utils/utils.js'
 import Axios from 'axios'
 
+const NameInitial = ({ name }) => {
+	// Extract the first letter of the name
+	const initial = name ? name.charAt(0).toUpperCase() : '';
+  
+	return (
+	  <div className="w-12 h-12 flex items-center justify-center bg-purple-500 text-white font-bold rounded-full">
+		{initial}
+	  </div>
+	);
+  };
+
 const Department = ({ className }) => {
 
 	const [section,setSection] = useState('class')
@@ -79,13 +90,14 @@ const Department = ({ className }) => {
 		        			{/* <p className="underline underline-offset-2">Student(280)</p> */}
 		        		</div>
 
-		        		<div className="w-ful bg-gray-3000 h-[60%] pt-5 overscroll-y-auto">
+		        		<div className="w-ful bg-gray-3000 h-[60%] pt-3 overscroll-y-auto">
 		        		{
 		        			courseMates && courseMates?.map((item,idx) => {
 		        			  	return <div className="pb-2 flex items-center gap-x-4 px-2">
-			        				<div className="w-14 h-14 rounded-full shadow-lg border-2 border-purple-300  bg-purple-100">
+			        				{/* <div className="w-14 h-14 rounded-full shadow-lg border-2 border-purple-300  bg-purple-100">
 										<img src={item.imgUrl} className='w-full h-full object-cover rounded-full'/>
-									</div>
+									</div> */}
+									<NameInitial name={item.name}/>
 			        				<div className="flex flex-col">
 				        				<div className="font-bold">{item.name}</div>
 				        				{!item.exco ? "" : <div className="font-light">{item.exco}</div>}

@@ -16,7 +16,8 @@ const PastQuestion = ({ className }) => {
 	const [time,setTime] = useState(10)
 	const [numberOfQuestions,setNumberOfQuestions] = useState(10)
 
-	const cours = [0,0,0,0,0,]
+	const cours = [0]
+	
     return (
        <MainLayout route="Past Q/A">
         	<section className="w-full h-full overflow-y-auto">
@@ -39,8 +40,8 @@ const PastQuestion = ({ className }) => {
         				return <div key={idx} className="pb-2 flex items-center gap-x-4 px-2">
 		        				<div className="w-14 h-14 rounded-xl full  bg-purple-200"></div>
 		        				<div className="flex flex-col">
-			        				<div className="font-bold">STA 190</div>
-			        				<div className="font-light">4 documents | PDF </div>
+			        				<div className="font-bold">No Course Yet</div>
+			        				<div className="font-light">0 documents | PDF </div>
 			        			</div>
 		        			</div>
 		        		})
