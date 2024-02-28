@@ -92,7 +92,7 @@ const Resources = ({ className }) => {
 	   				<ResourcesCard/>
 	   			</div> */}
 				<div className="flex items-center justify-center">
-					<p className="text-lg text-gray-600">
+					<p className="text-lg text-gray-600 text-center">
 						Oops! It looks like <strong>we're all out of resources</strong> for now. <br />
 						Don't worry, new content is on the way! 🚀 Check back later. ⏰
 					</p>
