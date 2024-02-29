@@ -1,6 +1,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { baseUrl } from '../utils/utils.js';
+import { baseUrl, getItem } from '../utils/utils.js';
 import axios from 'axios';
 
 const apiUrl = `${baseUrl}/api/auth`;
@@ -24,25 +24,40 @@ export const loginUser = createAsyncThunk('user/loginUser', async (credentials, 
   }
 });
 
+const uData = getItem('Qitt-Auth') || {};
+
 // Create user slice
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    name: '',
-    email: '',
-    joined: '',
-    gender: '',
-    dateOfBirth: '',
-    faculty: '',
-    department: '',
-    session: '',
-    imageUrl: '',
-    courseName: '',
+    name: uData.name || '',
+    email: uData.email || '',
+    joined: uData.joined || '',
+    gender: uData.gender || '',
+    dateOfBirth: uData.dateOfBirth || '',
+    faculty: uData.faculty || '',
+    department: uData.department || '',
+    session: uData.session || '',
+    imageUrl: uData.imageUrl || '',
+    courseName: uData.courseName || '',
     status: 'idle', // Possible values: 'idle', 'loading', 'succeeded', 'failed'
     error: null,
     message: '',
   },
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+        state.name = '';
+        state.email = '';
+        state.joined = '';
+        state.gender = '';
+        state.dateOfBirth = '';
+        state.faculty = '';
+        state.department = '';
+        state.session = '';
+        state.imageUrl = '';
+        state.courseName = '';
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -100,5 +115,6 @@ const userSlice = createSlice({
   },
 });
 
-// Export the reducer
+export const { logout } = userSlice.actions;
+
 export default userSlice.reducer;

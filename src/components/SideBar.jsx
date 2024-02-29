@@ -2,14 +2,15 @@ import React, { PropTypes } from 'react';
 
 import { Link } from 'react-router-dom'
 import { TbHome as Home, TbCalendarEvent as Events, TbBrandFeedly as Feed2 } from 'react-icons/tb'
-
+import { logout } from '../features/authSlice.js'
 import { LuLayoutDashboard as Home2, LuMessageSquare as Feedback, LuLogOut as Logout } from 'react-icons/lu'
 import { FiSend as SendIcon } from 'react-icons/fi'
 import { MdOutlineLocalLibrary as Library2 , MdBook as Book, MdSchool as School, MdOutlineAssignment as Assign } from 'react-icons/md'
-
+import { removeItem } from '../utils/utils';
+import { useDispatch } from 'react-redux';
 
 const SideBar = ({ route }) => {
-
+	const dispatch = useDispatch()
 	const data = [
 		{name:'Home', icon: <Home2 className="text-xl"/>,link:'/auth'},
 		{name:'Timetable', icon: <Events className="text-xl"/>,link:'/timetable'},
@@ -17,6 +18,11 @@ const SideBar = ({ route }) => {
 		{name:'Library', icon: <Library2 className="text-xl"/>,link:'/library'},
 		// {name:'Events', icon: <Events className="text-xl"/>,link:'/'}
 	]
+
+	const handleLogout = () => {
+		removeItem('Qitt-Auth')
+		dispatch(logout())
+	}
 
     return (
         <aside className="z-20 fixed sm:static sm:shadow-lg bottom-0 left-0 flex sm:flex-col bg-white py-1 sm:py-0  h-[70px] sm:h-screen w-full sm:w-[30%]">
@@ -42,10 +48,10 @@ const SideBar = ({ route }) => {
 	        	
 				</div>
 
-				<Link to="/" className="hidden sm:flex gap-3 xl:mb-3 mb-2 text-red-500 hover:text-red-600 ml-5">
+				<div className="hidden sm:flex gap-3 xl:mb-3 mb-2 text-red-500 hover:text-red-600 ml-5" onClick={handleLogout}>
 					<Logout className="text-xl font-medium"/>
 					Logout
-				</Link>
+				</div>
 
 			</div>
     	</aside>

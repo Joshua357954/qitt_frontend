@@ -55,60 +55,69 @@ const TimetableScreen = ({ className }) => {
  
 
    return (
+		<MainLayout route="Timetable">
+		<div className="w-full h-[96%] flex flex-col justify-center">
+			{/*
+			<div onClick={() => setIsExam(!isExam)} className="bg-white text-sm md:text-md font-bold px-2 py-3 flex items-center gap-2 rounded-md text-black">
+			{isExam ? <AL className="font-extrabold"/> : "" } {!isExam ? 'Exam' : 'Lecture'} {!isExam ? <AR className="font-extrabold"/>: ""} 
+			</div>
+			*/}
 
-   		<MainLayout route="Timetable">
+			<div className="w-full transition-all ease-in-out h-full flex flex-col items-center pt-5">
 
-    		<div className="w-full h-[96%] flex flex-col justify-center ">
-    		    	    {/*{<div onClick={() => setIsExam(!isExam)} className="bg-white text-sm md:text-md font-bold px-2 py-3 flex items-center gap-2 rounded-md  text-black">{isExam ? <AL className="font-extrabold"/> : "" } {!isExam ? 'Exam' : 'Lecture'} {!isExam ? <AR className="font-extrabold"/>: ""} </div>}*/}
-		
+			{isExam && (
+				<div className="mx-auto flex items-center gap-4 text-sm mb-4 bg-black text-white p-2 rounded font-bold">
+				<p className="bg-white text-black px-2 py-1">Week 1</p>
+				<p>Week 2</p>
+				</div>
+			)}
 
-    			<div className="w-full transition-all ease-in-out h-full flex flex-col items-center pt-5">
-    				
-    				{isExam ? <div className="mx-auto flex items-center gap-4 text-sm mb-4 bg-black text-white p-2 rounded font-bold">
-		    			<p className="bg-white text-black px-2 py-1 ">Week 1</p>
-	    				<p>Week 2</p>
-	    			</div> : ""}
+			<div className="w-full justify-start sm:justify-center flex overflow-x-auto h-12 gap-2 mb-5">
+				{days.map((item, idx) => (
+				<div
+					key={idx}
+					onClick={() => setDay(item)}
+					className={`capitalize flex text-black select-none justify-center px-3 font-bold text-sm items-center ${item === day ? 'bg-purple-300 border-[0px] border-black' : "bg-purple-50"} rounded-2xl`}
+				>
+					{item}
+				</div>
+				))}
+			</div>
 
-    				<div className="w-full justify-start sm:justify-center flex overflow-x-auto h-12 gap-2 mb-5">
-    					{
-    						days.map((item,idx) => {
-								return <div key={idx} onClick={() => setDay(item)} className={`capitalize flex text-black select-none justify-center px-3 font-bold text-sm items-center  ${item === day ? 'bg-purple-300 border-[0px] border-black' : "bg-purple-50"} rounded-2xl`}> {item} </div>
-    						})
-    					
-    					}
-    				</div>
+			<div className="px-2 flex flex-col items-center w-full">
+				{timetable && timetable.length > 0 ? (
+				timetable.map((dayItem, dayIdx) => {
+					const currentDay = Object.keys(dayItem)[0];
+					const dayClasses = Object.values(dayItem);
 
-    				<div className="px-2 flex  flex-col items-center w-full">
-	    				
-	    				{ timetable && timetable.map((item,idx) => {
-	    					var current_day = Object.keys(item)[0]
-	    					var day_classes = Object.values(item)
+					if (currentDay.toLowerCase() === day.toLowerCase()) {
+					return dayClasses.map((classItem, classIdx) => (
+						classItem.map((item, idx) => (
+						<div key={idx} className="flex w-full sm:w-[70%] mt-2 justify-between bg-gray-100 py-1 px-2">
+							<p className="w-[24%]">{formatTime(item.time)}</p>
+							<span className={`bg-slate-700 rounded h-22 w-[5px]`}></span>
+							<div className="flex flex-col w-[40%]">
+							<p className="font-bold">{formatCode(item.course)}</p>
+							<p className="font-light truncate">{item.venue}</p>
+							</div>
+						</div>
+						))
+					));
+					}
+					return null;
+				})
+				) : (
+				
+				<div className="w-full text-center mt-4 text-gray-600">
+					📅 No timetable entries found. Feel free to <br/>
+					<a href="https://api.whatsapp.com/send?text=Hi! I need assistance with my timetable." target="_blank" className="text-blue-500">send us on a message on WhatsApp</a>.
+				</div>
+				  
+				)}
+			</div>
 
-	    					if (current_day.toLowerCase() == day.toLowerCase()){
-	    						return day_classes.map((items,idx) => {
-	    								
-    								return (items.map((item,idx) => {
-		    									return <div key={idx} className="flex w-full sm:w-[70%] mt-2  justify-between bg-gray-100 py-1 px-2">
-												<p className="w-[24%]">{formatTime(item.time)}</p>
-												<span className={`bg-slate-700 rounded h-22 w-[5px] `}></span>
-												<div className="flex flex-col w-[40%]">
-												  <p className="font-bold">{formatCode(item.course)}</p>
-												  <p className="font-light truncate">{item.venue}</p>
-												</div>
-											  </div>
-											  
-							    			})
-					    				)
-					    			})
-		    					}
-			    			})
-						}
-					</div>
-
-    			</div>
-
-    		</div>
-
+			</div>
+		</div>
 		</MainLayout>
     );
 };

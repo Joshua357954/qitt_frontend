@@ -75,7 +75,7 @@ const Resources = ({ className }) => {
 	   			 <div className="w-full  h-14 overflow-x-auto flex justify-start sm:justify-center gap-2">
 	   				{  
 	   					resourcesData.map((item,index)=>{
-	   						return <div onClick={() => setResource(item.category)} className={`p-3 ${item.category == resourceName ? 'px-4 font-bold border ':""} flex gap-1 items-center rounded-xl bg-gray-50 `}>
+	   						return <div key={index} onClick={() => setResource(item.category)} className={`p-3 ${item.category == resourceName ? 'px-4 font-bold border ':""} flex gap-1 items-center rounded-xl bg-gray-50 `}>
 	   								{icons[item.category]} <p className=" whitespace-nowrap capitalize">{item.category}</p>
 			   					  </div>
 	   					})

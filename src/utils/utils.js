@@ -46,6 +46,22 @@ export function convertToTime(deadlineObject) {
 }
 
 
+export function addItem(itemKey, itemValue) {
+    var jsonString = JSON.stringify(itemValue);
+    localStorage.setItem(itemKey, jsonString);
+}
+  
+  // Function to get an item from local storage
+export function getItem(itemKey) {
+    var retrievedJsonString = localStorage.getItem(itemKey);
+    var retrievedObject = JSON.parse(retrievedJsonString);
+    return retrievedObject;
+}
+
+export function removeItem(itemKey) {
+    localStorage.removeItem(itemKey);
+}
+
 // {
 //     subject: 'STA 132',
 //     numAssignments: 3,

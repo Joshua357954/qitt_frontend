@@ -31,33 +31,15 @@ const Notice = ({ className }) => {
     {
       type: 'announcement',
       title: 'Important Announcement',
-      date: '15th Jun',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel semper dui. Nulla facilisi. Integer nec sem vel ligula varius malesuada. Sed id felis eu justo fermentum tincidunt. Mauris id nisl vitae sapien rhoncus mattis at eu justo.',
-    },
-    {
-      type: 'notification',
-      title: 'New Notification',
-      date: '16th Jun',
-      description: 'Duis mollis, velit in luctus convallis, metus nisl accumsan erat, a fermentum velit purus a lectus. Sed ac felis varius, posuere sapien ac, pharetra justo. Sed interdum vestibulum tellus in efficitur. Fusce ut ex id orci tristique posuere. Ut nec fermentum mauris, ac vulputate justo.',
+      date: '27th Feb',
+      description: 'Holla! No school tomorrow. Submission of CSC281 assignment will be kept pending until we resume. Don\'t get too excited; it\'s just a 2-day strike. DO YOUR ASSIGNMENT! 😒📢📢📢',
     },
     {
       type: 'announcement',
-      title: 'Another Announcement',
-      date: '17th Jun',
-      description: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur a sapien dui. Maecenas vel efficitur justo. Ut efficitur neque ac metus laoreet, in elementum libero volutpat. Fusce accumsan turpis ac libero dictum tristique.',
-    },
-    {
-      type: 'notification',
-      title: 'Reminder',
-      date: '18th Jun',
-      description: 'Suspendisse potenti. Duis sagittis sapien nec nunc eleifend volutpat. Maecenas id sagittis odio, id ultrices augue. Morbi ultricies nisl et laoreet tincidunt. Nunc quis hendrerit tellus. Nam sed felis sed erat bibendum facilisis ut id mauris.',
-    },
-    {
-      type: 'announcement',
-      title: 'Important Update',
-      date: '19th Jun',
-      description: 'Vivamus sit amet laoreet justo. Nam pharetra urna quis elit aliquam, at sagittis metus fringilla. Aenean imperdiet felis vel justo venenatis, id aliquam turpis scelerisque. In hac habitasse platea dictumst. Nam tincidunt nunc ut augue auctor euismod.',
-    },
+      title: 'Important Announcement',
+      date: '28th Feb',
+      description: '📢📢📢 The NLC protest has been called off, so school resumes today. However, the Lecturer for CSC281 won\'t be coming, and he has granted today as the last day for the assignment to be done. Submission will be done tomorrow. Maths210 class for today is still pending. Stay tuned for any update on it.',
+    }
   ];
  
 

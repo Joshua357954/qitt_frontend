@@ -5,7 +5,7 @@ import { BsChat as Chat, BsChevronRight } from 'react-icons/bs';
 import { FcGoogle as Google } from 'react-icons/fc';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { baseUrl } from '../utils/utils.js';
+import { baseUrl ,getItem, addItem} from '../utils/utils.js';
 import Loader from './Loader.jsx';
 import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser } from '../features/authSlice';
@@ -70,7 +70,7 @@ const AuthScreen = () => {
 
   useEffect(() => {
     setIsValidEmail(/^\S+@\S+\.\S+$/.test(email));
-    setIsValidRegNumber(isLogin || /^\d{12}[A-Z]{2}$/i.test(regNumber));
+    setIsValidRegNumber(isLogin || /^\d{8,}[A-Z]{2}$/i.test(regNumber));
     setIsValidPassword(password.length >= 5); // Minimum length of 5 characters for the password
   }, [email, regNumber, password, isLogin]);
 
@@ -86,7 +86,8 @@ const AuthScreen = () => {
        
         if (loginData.payload.status){ 
           console.log(loginData)
-          redirect('/auth')
+          addItem('Qitt-Auth',loginData.payload)
+          redirect('/')
         }
       } else {
         const regData = await dispatch(registerUser({ regNumber, email, password }));
@@ -138,7 +139,7 @@ const AuthScreen = () => {
             className={`w-full flex rounded-[4px] text-gray-50 active:text-gray-50 hover:text-gray-100 justify-center gap-2 font-bold items-center py-4 hover:bg- bg-[#6C22A6] ${
               isSubmitDisabled ? 'cursor-not-allowed opacity-50' : ''
             }`}
-            disabled={isSubmitDisabled}
+            disabled={isLogin ? false : isSubmitDisabled}
           >
             {isLogin ? 'Login' : 'Register'} <Arrow className="font-bold" />
           </Link>

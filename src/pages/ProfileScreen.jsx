@@ -6,6 +6,9 @@ import PageNav from '../components/PageNav.jsx'
 import { useDispatch, useSelector } from 'react-redux';
 import MainLayout from '../components/MainLayout.jsx'
 import { BsChevronLeft as Arrow  } from 'react-icons/bs'
+import { logout } from '../features/authSlice.js';
+import { CgLogOut } from 'react-icons/cg';
+import { removeItem } from '../utils/utils.js';
 
 
 const ProfileScreen = ({ className }) => {
@@ -26,6 +29,14 @@ const ProfileScreen = ({ className }) => {
 		const suffix = (10 <= day % 100 && day % 100 <= 20) ? 'th' : { 1: 'st', 2: 'nd', 3: 'rd' }[day % 10] || 'th';
 		return `${day}${suffix}   ${month}`;
 	}
+
+	const dispatch = useDispatch()
+
+	const handleLogout = () => {
+		removeItem('Qitt-Auth')
+		dispatch(logout())
+	}
+
 
     return (
         <MainLayout route="Profile">
@@ -91,6 +102,12 @@ const ProfileScreen = ({ className }) => {
 
 	        		</fieldset>
     			</div>
+	
+				<div className="mt-12 sm:hidden flex justify-center gap-3 xl:mb-3 mb-2 text-red-500 hover:text-red-600 mr-6" onClick={handleLogout}>
+					<CgLogOut className="text-xl font-medium"/>
+					Logout
+				</div>
+
     		</div>
         </MainLayout>
 

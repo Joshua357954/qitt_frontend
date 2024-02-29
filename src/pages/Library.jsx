@@ -51,7 +51,7 @@ const Library = ({ className }) => {
 	        	<div className="w-full  h-14 overflow-x-auto flex justify-start sm:justify-center gap-2">
 		   		{  
 					libraryData.map((item,index)=>{
-						return <div onClick={() => setResource(item)} className={`p-3 ${item == resourceName ? 'px-4 font-bold border ':""} flex gap-1 items-center rounded-xl bg-gray-50 `}>
+						return <div key={index} onClick={() => setResource(item)} className={`p-3 ${item == resourceName ? 'px-4 font-bold border ':""} flex gap-1 items-center rounded-xl bg-gray-50 `}>
 								{icons[item]} <p className=" whitespace-nowrap capitalize">{item}</p>
 	   					  </div>
 					})

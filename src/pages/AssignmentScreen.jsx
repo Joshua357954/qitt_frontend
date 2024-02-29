@@ -60,47 +60,53 @@ const AssignmentScreen = ({ className }) => {
 
 		return `${formattedWeekday} ${formattedMonth} ${time}`
 	}  
-
+ 
 	return (
-
 		<MainLayout route="Assignment">
+		<div className="w-full pt-3 min-h-full overflow-y-auto">
+			{assignments.length === 0 ? (
+				<div className="w-full text-center mt-4 text-gray-600">
+				✨ Feel free to add or update assignment information. Your contributions are valuable!
+				<br />
+				For assistance or inquiries, you can send a message to this number 📱.<br/>
+				<a href="https://api.whatsapp.com/send?text=Hi! I have a question about adding or updating assignment information." target="_blank" className="text-blue-500">Click here to chat on WhatsApp 🚀</a>.
+			  </div>
+			  
+			  
+			) : (
+			assignments.map((item, idx) => {
+				const color = data1[idx].color;
+				return (
+				<div key={idx} className={`w-full mb-2 bg-white min-h-32 pb-1 flex items-center rounded`}>
+					<div className={`relative w-[35%] h-32 bg-gray-100 flex justify-center items-center rounded-tl rounded-bl`}>
+					<img src={Assignment} className='w-24' alt="Assignment Icon" />
+					</div>
 
-			<div className="w-full pt-3 min-h-full overflow-y-auto ">
+					<div className="w-[65%] h-full flex flex-col px-3 pt-2 gap-y-1">
+					<h2 to="/assignment/physics" className="text-2xl font-extrabold text-gray-700 space-x-5">{item?.subject}</h2>
+					<p className="font-light flex gap-x-2 items-center justify-center py-1 rounded-xl w-32">{num[item.numAssignments]}Assignment{item.numAssignments > 1 ? "s" : ""}</p>
 
-				
-				{  assignments.map((item,idx) => {
-					const color = data1[idx].color
-					return <div key={idx} className={`w-full mb-2 bg-white min-h-32 pb-1 flex items-center  rounded`}>
-					
-    					<div className={`relative w-[35%] h-32 bg-gray-100 flex justify-center items-center rounded-tl rounded-bl`}>
-							<img src={Assignment} className='w-24' />
-	    				</div>
-
-						<div className="w-[65%] h-full flex flex-col px-3 pt-2 gap-y-1">
-							<h2 to="/assignment/physics" className="text-2xl font-extrabold text-gray-700 space-x-5">{item?.subject}</h2>
-							<p className="font-light flex gap-x-2 items-center justify-center  py-1 rounded-xl w-32">{num[item.numAssignments]}Assignment{item.numAssignments > 1 ?"s":""}</p>
-							{/*<p className="font-light">22 days ago</p>*/}
-							<div className="flex gap-1 flex-wrap">
-								{item.assignments.map((dateItem, dateIdx) => (
-									<Link
-									key={dateIdx}
-									to={`/assignment/${item.subject}/${ realDate(dateItem.dateGiven) }/${ realDate(dateItem.deadline)}/${dateItem.content}`}
-									className="text-black hover:text-gray-700 text-sm sm:text-md px-2 py-1 bg-blue-100 gap-x-1 hover:bg-blue-200 text-medium flex items-center rounded"
-									><Doc/>
-									{realDate(dateItem.dateGiven).split(' ').slice(-2).join(' ') }
-									</Link>
-								))}
-								{/* <Link to="/assignment/Physics/June 5" className="text-black  hover:text-gray-700 text-sm sm:text-md px-2 py-1 bg-blue-100 gap-x-1 hover:bg-blue-200 text-medium flex items-center rounded"><Doc/> July 5<sup>th</sup> </Link>
-								<Link to="/assignment/STA 126/July 22" className="text-black hover:text-gray-700 text-sm sm:text-md  px-2 py-1 bg-blue-100 gap-x-1 hover:bg-blue-200 text-medium flex items-center rounded"><Doc/> Sept 13<sup>th</sup> </Link>
-								<Link to="/assignment/GES 101/May 19"className="text-black hover:text-gray-700 text-sm sm:text-md  px-2 py-1 bg-blue-100 gap-x-1 hover:bg-blue-200 text-medium flex items-center rounded"><Doc/> July 1<sup>st</sup> </Link> */}
-							</div>
-						</div>
-
-		        	</div>})
-		        }
-
-	        </div>
+					<div className="flex gap-1 flex-wrap">
+						{item.assignments.map((dateItem, dateIdx) => (
+						<Link
+							key={dateIdx}
+							to={`/assignment/${item.subject}/${realDate(dateItem.dateGiven)}/${realDate(dateItem.deadline)}/${dateItem.content}`}
+							className="text-black hover:text-gray-700 text-sm sm:text-md px-2 py-1 bg-blue-100 gap-x-1 hover:bg-blue-200 text-medium flex items-center rounded"
+						>
+							{/* You may want to replace the below line with your actual Doc component */}
+							<Doc />
+							{realDate(dateItem.dateGiven).split(' ').slice(-2).join(' ')}
+						</Link>
+						))}
+					</div>
+					</div>
+				</div>
+				);
+			})
+			)}
+		</div>
 		</MainLayout>
+
     );
 };
 

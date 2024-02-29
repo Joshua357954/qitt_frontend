@@ -3,6 +3,8 @@ import {
   RouterProvider,
 } from "react-router-dom"
 
+import ProtectedAuth from "./utils/ProtectedAuth.jsx"
+import ProtectedRoute from "./utils/ProtectedRoute.jsx"
 import HomeScreen from "./pages/HomeScreen.jsx"
 import AuthScreen from "./pages/AuthScreen.jsx"
 import FeedbackScreen from "./pages/FeedbackScreen.jsx"
@@ -34,79 +36,72 @@ import AdminFeedbackScreen from './pages/screens/FeedbackScreen.jsx'
 const router = createBrowserRouter([
     
     {
-      path: "/",
-      element: <AuthScreen /> ,
+      path: "/auth",
+      element: <ProtectedAuth> 
+                    <AuthScreen /> 
+               </ProtectedAuth> ,
     },
 
     {
-      path: "/auth",
-      element: <HomeScreen />,
+      path: "/",
+      element: <ProtectedRoute><HomeScreen/></ProtectedRoute>,
     },
     {
       path: "/verifyUser/:id",
       element: <VerifyUser />,
     },
-
     {
       path: "/feedback",
-      element: <FeedbackScreen />,
+      element: <ProtectedRoute><FeedbackScreen /></ProtectedRoute>,
     },
-
     {
       path: "/profile",
-      element: <ProfileScreen />,
+      element: <ProtectedRoute><ProfileScreen /></ProtectedRoute>,
     },
-
     {
       path: "/timetable",
-      element: <TimetableScreen />,
+      element: <ProtectedRoute><TimetableScreen /></ProtectedRoute>,
     },
-
     {
       path: "/department",
-      element: <DepartmentScreen />,
+      element: <ProtectedRoute><DepartmentScreen /></ProtectedRoute>,
     },
-
     {
       path: "/assignment",
-      element: <AssignmentScreen />,
-
+      element: <ProtectedRoute><AssignmentScreen /></ProtectedRoute>,
     },
     {
-          path: "/assignmentByCourse",
-          element: <AssignmentDetailScreen />,
+      path: "/assignmentByCourse",
+      element: <ProtectedRoute><AssignmentDetailScreen /></ProtectedRoute>,
     },
-      {
-          path: "/assignment/:course/:dateGiven/:deadline/:content",
-          element: <AssignmentDetailScreen />,
-    },
-      {
-          path: "/pastQuestion",
-          element: <PastQuestionScreen />,
-    },
-      {
-          path: "/past_question_practice/:course/:time/:numberOfQuestions",
-          element: <QuizScreen />,
-    },
-      {
-          path: "/past_question_scoreboard",
-          element: <ScoreBoardScreen />,
-    },
-
-      {
-          path: "/resources",
-          element: <Resources/>,
-    },
-      {
-          path: "/library",
-          element: <Library/>,
-    },
-
     {
-          path: "/notice",
-          element: <Notice/>,
+      path: "/assignment/:course/:dateGiven/:deadline/:content",
+      element: <ProtectedRoute><AssignmentDetailScreen /></ProtectedRoute>,
     },
-
+    {
+      path: "/pastQuestion",
+      element: <ProtectedRoute><PastQuestionScreen /></ProtectedRoute>,
+    },
+    {
+      path: "/past_question_practice/:course/:time/:numberOfQuestions",
+      element: <ProtectedRoute><QuizScreen /></ProtectedRoute>,
+    },
+    {
+      path: "/past_question_scoreboard",
+      element: <ProtectedRoute><ScoreBoardScreen /></ProtectedRoute>,
+    },
+    {
+      path: "/resources",
+      element: <ProtectedRoute><Resources /></ProtectedRoute>,
+    },
+    {
+      path: "/library",
+      element: <ProtectedRoute><Library /></ProtectedRoute>,
+    },
+    {
+      path: "/notice",
+      element: <ProtectedRoute><Notice /></ProtectedRoute>,
+    },
     {
       path: "/admin",
       element: <AdminScreen />,
