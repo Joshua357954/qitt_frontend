@@ -123,8 +123,16 @@ const HomeScreen = () => {
 				      ))}
 				</div>
 
-				<h2 className="font-semibold text-xl mt-4 my-2">Today's Classes</h2>
-				
+			<h2 class="font-semibold text-xl mt-4 mb-2">
+					Today's Classes
+					{timetableData(timetable).length > 0 && (
+						<span class="bg-blue-400 text-white rounded-full ml-3 px-2">
+						{timetableData(timetable).length}
+						</span>
+					)}
+					
+					</h2>
+
 				<div className="bg-white w-full flex gap-2 pb-1 overflow-x-auto">
 				  {timetable && timetableData(timetable)?.map((item, index) => (
 				    <div key={index} className="flex border-l-2 border-l-gray-400 flex-col gap-0 bg-gray-50 px-2 py-1 rounded border-2 border-gray-50">
