@@ -126,7 +126,7 @@ const HomeScreen = () => {
 			<h2 class="font-semibold text-xl mt-4 mb-2">
 					Today's Classes
 					{timetableData(timetable).length > 0 && (
-						<span class="bg-blue-400 text-white rounded-full ml-3 px-2">
+						<span class="bg-blue-500 text-sm text-white rounded-full ml-3 px-2 py-1">
 						{timetableData(timetable).length}
 						</span>
 					)}
