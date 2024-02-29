@@ -155,13 +155,16 @@ const AuthScreen = () => {
           )}
         </div>
 
-        <p className="my-3">
+        {/* <p className="my-3">
           With 😍{' '}
           <Link to="/" className="underline focus:text-black text-black hover:text-black">
             <b>Qitt HQ</b>
           </Link>{' '}
-        </p>
-      </div>
+        </p> */}
+
+        <p class="text-center mt-3 text-gray-600 underline-offset-2 underline hover:opacity-80">
+          Fully available for <b>CSC Year 2</b>. Stay tuned for the rollout to everyone! ⌛</p>
+        </div>
       <Toaster />
     </form>
   );
