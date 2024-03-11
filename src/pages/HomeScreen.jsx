@@ -37,7 +37,7 @@ const HomeScreen = () => {
 
 
 	const dept = 'computer_science';
-	const year = '100';
+	const year = '200';
 	const daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 	const currentDayIndex = new Date().getDay();
 	const currentDay = daysOfWeek[currentDayIndex].toLowerCase();
