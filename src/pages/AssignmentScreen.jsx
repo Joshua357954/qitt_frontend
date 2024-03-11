@@ -34,7 +34,7 @@ const AssignmentScreen = ({ className }) => {
 	  };
 	//   const [assignments, setAssignments] = useState([]);
 	  const department = 'computer_science';
-	  const year = '100';
+	  const year = '200';
 	
 	  useEffect(() => {
 		const fetchAssignments = async () => {
